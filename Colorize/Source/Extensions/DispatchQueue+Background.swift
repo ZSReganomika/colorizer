@@ -1,5 +1,8 @@
 import Foundation
 
 extension DispatchQueue {
-    static var background = DispatchQueue(label: "z.s.colorizer", qos: .userInitiated)
+    static var background = DispatchQueue(
+        label: "reganomika.z.s.colorizer",
+        qos: .userInitiated
+    )
 }

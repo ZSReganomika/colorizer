@@ -1,51 +1,13 @@
+import Foundation
 import UIKit
-import CoreML
-import Vision
-import CoreMedia
-import Combine
 
-final class MainViewController: UIViewController {
+class MainViewController: UIViewController {
 
-    // MARK: - Private properties
-
-    private var postPhotoButton = UIButton()
-    private var imagePicker = UIImagePickerController()
-    private var imageView = UIImageView()
-
-    private var data: Data?
-    private var model: MLModel?
-
-    // MARK: - Life cycle
+    private var collectionView: UICollectionView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
-        configureModel()
-
-    }
-
-    func configureModel() {
-        DispatchQueue.global().async {
-            do {
-                if let filename = UserDefaults.standard.string(forKey: "ml_model_destination") {
-                    let fileManager = FileManager.default
-                    let appSupportDirectory = try fileManager.url(
-                        for: .applicationSupportDirectory,
-                        in: .userDomainMask,
-                        appropriateFor: nil,
-                        create: true
-                    )
-
-                    let permanentUrl = appSupportDirectory.appendingPathComponent(filename)
-
-                    self.model = try MLModel(contentsOf: permanentUrl)
-                } else {
-                    fatalError("fail to get url")
-                }
-            } catch {
-                print(error.localizedDescription)
-            }
-        }
     }
 }
 
@@ -55,66 +17,18 @@ extension MainViewController: LayoutConfigurableView {
 
     func configureViewProperties() {
         title = "Main"
-
-        view.backgroundColor = .white
-        view.addSubview(postPhotoButton)
-        view.addSubview(imageView)
     }
 
     func configureSubviews() {
-        configurePostPhotoButton()
-        configureImageView()
-        configureImagePicker()
+        configureCollectionView()
     }
 
     func configureLayout() {
-        configurePostPhotoButtonLayout()
-        configureImageViewLayout()
-    }
-}
-
-// MARK: - Constraints
-
-private extension MainViewController {
-
-    func configurePostPhotoButtonLayout() {
         NSLayoutConstraint.activate([
-            postPhotoButton.bottomAnchor.constraint(
-                equalTo: view.bottomAnchor,
-                constant: Constants.PostPhotoButton.bottom
-            ),
-            postPhotoButton.leadingAnchor.constraint(
-                equalTo: view.leadingAnchor,
-                constant: Constants.PostPhotoButton.leading
-            ),
-            postPhotoButton.trailingAnchor.constraint(
-                equalTo: view.trailingAnchor,
-                constant: Constants.PostPhotoButton.trailing
-            ),
-            postPhotoButton.heightAnchor.constraint(
-                equalToConstant: Constants.PostPhotoButton.height
-            )
-        ])
-    }
-
-    func configureImageViewLayout() {
-        NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(
-                equalTo: view.safeAreaLayoutGuide.topAnchor,
-                constant: Constants.ImageView.top
-            ),
-            imageView.bottomAnchor.constraint(
-                equalTo: postPhotoButton.topAnchor,
-                constant: Constants.ImageView.bottom
-            ),
-            imageView.leadingAnchor.constraint(
-                equalTo: view.leadingAnchor,
-                constant: Constants.ImageView.leading
-            ),
-            imageView.trailingAnchor.constraint(
-                equalTo: view.trailingAnchor,
-                constant: Constants.ImageView.trailing
-            )
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
 }
@@ -123,103 +37,93 @@ private extension MainViewController {
 
 private extension MainViewController {
 
-    func configureImageView() {
-        imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFill
-        imageView.layer.cornerRadius = 5
-        imageView.layer.borderColor = UIColor.gray.cgColor
-        imageView.layer.borderWidth = 2
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-    }
-
-    func configureImagePicker() {
-        imagePicker.delegate = self
-        imagePicker.sourceType = .savedPhotosAlbum
-        imagePicker.allowsEditing = false
-    }
-
-    func configurePostPhotoButton() {
-        postPhotoButton.setTitle("POST IMAGE", for: .normal)
-        postPhotoButton.setTitleColor(.gray, for: .normal)
-        postPhotoButton.layer.cornerRadius = 5
-        postPhotoButton.clipsToBounds = true
-        postPhotoButton.layer.borderColor = UIColor.gray.cgColor
-        postPhotoButton.layer.borderWidth = 2
-        postPhotoButton.translatesAutoresizingMaskIntoConstraints = false
-
-        postPhotoButton.addTarget(
-            self,
-            action: #selector(postPhotoButtonAction),
-            for: .touchUpInside
+    func configureCollectionView() {
+        collectionView = UICollectionView(
+            frame: view.bounds,
+            collectionViewLayout: createLayout()
         )
+        collectionView.autoresizingMask = [
+            .flexibleWidth,
+            .flexibleHeight
+        ]
+        collectionView.backgroundColor = .lightGray
+        collectionView.register(
+            HistoryItemCell.self,
+            forCellWithReuseIdentifier: HistoryItemCell.reuseIdentifier
+        )
+
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        view.addSubview(collectionView)
+    }
+
+    func createLayout() -> UICollectionViewLayout {
+
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .fractionalHeight(1.0)
+        )
+
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .fractionalWidth(0.5)
+        )
+
+        let group = NSCollectionLayoutGroup.horizontal(
+            layoutSize: groupSize,
+            repeatingSubitem: item,
+            count: 1
+        )
+        let spacing : CGFloat = 20
+
+        group.interItemSpacing = .fixed(spacing)
+        let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = spacing
+        section.contentInsets = NSDirectionalEdgeInsets(
+            top: 0,
+            leading: spacing,
+            bottom: 0,
+            trailing: spacing
+        )
+
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        return layout
     }
 }
 
-extension MainViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+// MARK: - UICollectionViewDataSource
 
-    func imagePickerController(
-        _ picker: UIImagePickerController,
-        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]
-    ) {
-        guard let image = info[.originalImage] as? UIImage else { return }
+extension MainViewController: UICollectionViewDataSource {
 
-        colorize(image: image)
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 15
+    }
 
-        picker.dismiss(animated: true)
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: HistoryItemCell.reuseIdentifier,
+            for: indexPath
+        )
+        cell.backgroundColor = .green
+        cell.layer.borderWidth = 1
+        cell.layer.borderColor = UIColor.gray.cgColor
+        return cell
     }
 }
 
-// MARK: - Private actions
+// MARK: - UICollectionViewDelegate
 
-private extension MainViewController {
+extension MainViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-    @objc
-    func postPhotoButtonAction() {
-        present(imagePicker, animated: true)
-    }
-
-    func colorize(image: UIImage) {
-        if let model {
-            ImageColorizer().colorize(image: image, model: model) { result in
-                switch result {
-                case let .success(resultImage):
-                    DispatchQueue.main.async {
-                        self.imageView.image = resultImage
-                    }
-                case let .failure(error):
-                    print(error.localizedDescription)
-                }
-            }
-        }
     }
 }
 
 // MARK: - Constants
 
 private enum Constants {
-    enum PostPhotoButton {
-        static let bottom: CGFloat = -100
-        static let leading: CGFloat = 50.0
-        static let trailing: CGFloat = -50.0
-        static let height: CGFloat = 100.0
-    }
 
-    enum ImageView {
-        static let bottom: CGFloat = -20.0
-        static let leading: CGFloat = 50.0
-        static let trailing: CGFloat = -50.0
-        static let top: CGFloat = 20.0
-    }
-
-    static let inputDimension = 256
-    static let inputSize = CGSize(
-        width: inputDimension,
-        height: inputDimension
-    )
-    static let coremlInputShape = [
-        1,
-        1,
-        NSNumber(value: Constants.inputDimension),
-        NSNumber(value: Constants.inputDimension)
-    ]
 }
