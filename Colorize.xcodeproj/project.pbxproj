@@ -1,0 +1,723 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FA5728D92A52DB9F00FB1BAA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5728D82A52DB9F00FB1BAA /* AppDelegate.swift */; };
+		FA5728DD2A52DB9F00FB1BAA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5728DC2A52DB9F00FB1BAA /* MainViewController.swift */; };
+		FA5728E22A52DBA100FB1BAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA5728E12A52DBA100FB1BAA /* Assets.xcassets */; };
+		FA5728E52A52DBA100FB1BAA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA5728E32A52DBA100FB1BAA /* LaunchScreen.storyboard */; };
+		FA5728F92A52E8DF00FB1BAA /* Net.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5728F82A52E8DF00FB1BAA /* Net.swift */; };
+		FA5728FF2A52EB6900FB1BAA /* Data+Append.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5728FE2A52EB6900FB1BAA /* Data+Append.swift */; };
+		FA5729012A52F38200FB1BAA /* DownloadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5729002A52F38200FB1BAA /* DownloadTask.swift */; };
+		FA57292E2A531B9E00FB1BAA /* LayoutConfigurableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5729052A531B9E00FB1BAA /* LayoutConfigurableView.swift */; };
+		FA5729542A532FD200FB1BAA /* UIImage+Scaled.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5729532A532FD200FB1BAA /* UIImage+Scaled.swift */; };
+		FA5729592A53FCE500FB1BAA /* ImageColorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5729582A53FCE500FB1BAA /* ImageColorizer.swift */; };
+		FA57295B2A53FD1200FB1BAA /* DispatchQueue+Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57295A2A53FD1200FB1BAA /* DispatchQueue+Background.swift */; };
+		FA5729872A5437FF00FB1BAA /* UIViewController+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5729602A5437FF00FB1BAA /* UIViewController+Utils.swift */; };
+		FA5729892A5437FF00FB1BAA /* UIImage+Lab.mm in Sources */ = {isa = PBXBuildFile; fileRef = FA5729622A5437FF00FB1BAA /* UIImage+Lab.mm */; };
+		FA57298A2A5437FF00FB1BAA /* cmsps2.c in Sources */ = {isa = PBXBuildFile; fileRef = FA5729642A5437FF00FB1BAA /* cmsps2.c */; };
+		FA57298B2A5437FF00FB1BAA /* cmstypes.c in Sources */ = {isa = PBXBuildFile; fileRef = FA5729652A5437FF00FB1BAA /* cmstypes.c */; };
+		FA57298C2A5437FF00FB1BAA /* cmscgats.c in Sources */ = {isa = PBXBuildFile; fileRef = FA5729662A5437FF00FB1BAA /* cmscgats.c */; };
+		FA57298D2A5437FF00FB1BAA /* cmslut.c in Sources */ = {isa = PBXBuildFile; fileRef = FA5729672A5437FF00FB1BAA /* cmslut.c */; };
+		FA57298E2A5437FF00FB1BAA /* cmsopt.c in Sources */ = {isa = PBXBuildFile; fileRef = FA5729682A5437FF00FB1BAA /* cmsopt.c */; };
+		FA57298F2A5437FF00FB1BAA /* cmssamp.c in Sources */ = {isa = PBXBuildFile; fileRef = FA5729692A5437FF00FB1BAA /* cmssamp.c */; };
+		FA5729902A5437FF00FB1BAA /* sRGB_v4_ICC_preference.icc in Resources */ = {isa = PBXBuildFile; fileRef = FA57296A2A5437FF00FB1BAA /* sRGB_v4_ICC_preference.icc */; };
+		FA5729912A5437FF00FB1BAA /* cmscnvrt.c in Sources */ = {isa = PBXBuildFile; fileRef = FA57296B2A5437FF00FB1BAA /* cmscnvrt.c */; };
+		FA5729922A5437FF00FB1BAA /* cmsmtrx.c in Sources */ = {isa = PBXBuildFile; fileRef = FA57296C2A5437FF00FB1BAA /* cmsmtrx.c */; };
+		FA5729932A5437FF00FB1BAA /* cmsplugin.c in Sources */ = {isa = PBXBuildFile; fileRef = FA57296E2A5437FF00FB1BAA /* cmsplugin.c */; };
+		FA5729942A5437FF00FB1BAA /* cmswtpnt.c in Sources */ = {isa = PBXBuildFile; fileRef = FA57296F2A5437FF00FB1BAA /* cmswtpnt.c */; };
+		FA5729952A5437FF00FB1BAA /* cmsnamed.c in Sources */ = {isa = PBXBuildFile; fileRef = FA5729702A5437FF00FB1BAA /* cmsnamed.c */; };
+		FA5729962A5437FF00FB1BAA /* cmsalpha.c in Sources */ = {isa = PBXBuildFile; fileRef = FA5729712A5437FF00FB1BAA /* cmsalpha.c */; };
+		FA5729972A5437FF00FB1BAA /* cmsio0.c in Sources */ = {isa = PBXBuildFile; fileRef = FA5729722A5437FF00FB1BAA /* cmsio0.c */; };
+		FA5729982A5437FF00FB1BAA /* cmsgamma.c in Sources */ = {isa = PBXBuildFile; fileRef = FA5729732A5437FF00FB1BAA /* cmsgamma.c */; };
+		FA5729992A5437FF00FB1BAA /* Makefile.am in Resources */ = {isa = PBXBuildFile; fileRef = FA5729742A5437FF00FB1BAA /* Makefile.am */; };
+		FA57299A2A5437FF00FB1BAA /* cmscam02.c in Sources */ = {isa = PBXBuildFile; fileRef = FA5729752A5437FF00FB1BAA /* cmscam02.c */; };
+		FA57299B2A5437FF00FB1BAA /* cmssm.c in Sources */ = {isa = PBXBuildFile; fileRef = FA5729762A5437FF00FB1BAA /* cmssm.c */; };
+		FA57299C2A5437FF00FB1BAA /* cmsxform.c in Sources */ = {isa = PBXBuildFile; fileRef = FA5729772A5437FF00FB1BAA /* cmsxform.c */; };
+		FA57299D2A5437FF00FB1BAA /* lcms2.def in Resources */ = {isa = PBXBuildFile; fileRef = FA5729782A5437FF00FB1BAA /* lcms2.def */; };
+		FA57299E2A5437FF00FB1BAA /* cmsvirt.c in Sources */ = {isa = PBXBuildFile; fileRef = FA5729792A5437FF00FB1BAA /* cmsvirt.c */; };
+		FA57299F2A5437FF00FB1BAA /* cmserr.c in Sources */ = {isa = PBXBuildFile; fileRef = FA57297A2A5437FF00FB1BAA /* cmserr.c */; };
+		FA5729A02A5437FF00FB1BAA /* cmsio1.c in Sources */ = {isa = PBXBuildFile; fileRef = FA57297B2A5437FF00FB1BAA /* cmsio1.c */; };
+		FA5729A12A5437FF00FB1BAA /* cmsgmt.c in Sources */ = {isa = PBXBuildFile; fileRef = FA57297D2A5437FF00FB1BAA /* cmsgmt.c */; };
+		FA5729A22A5437FF00FB1BAA /* cmspcs.c in Sources */ = {isa = PBXBuildFile; fileRef = FA57297E2A5437FF00FB1BAA /* cmspcs.c */; };
+		FA5729A32A5437FF00FB1BAA /* sRGB_ICC_v4_Appearance.icc in Resources */ = {isa = PBXBuildFile; fileRef = FA57297F2A5437FF00FB1BAA /* sRGB_ICC_v4_Appearance.icc */; };
+		FA5729A42A5437FF00FB1BAA /* cmspack.c in Sources */ = {isa = PBXBuildFile; fileRef = FA5729802A5437FF00FB1BAA /* cmspack.c */; };
+		FA5729A52A5437FF00FB1BAA /* Makefile.in in Resources */ = {isa = PBXBuildFile; fileRef = FA5729812A5437FF00FB1BAA /* Makefile.in */; };
+		FA5729A62A5437FF00FB1BAA /* cmsmd5.c in Sources */ = {isa = PBXBuildFile; fileRef = FA5729832A5437FF00FB1BAA /* cmsmd5.c */; };
+		FA5729A72A5437FF00FB1BAA /* cmsintrp.c in Sources */ = {isa = PBXBuildFile; fileRef = FA5729842A5437FF00FB1BAA /* cmsintrp.c */; };
+		FA5729A82A5437FF00FB1BAA /* cmshalf.c in Sources */ = {isa = PBXBuildFile; fileRef = FA5729852A5437FF00FB1BAA /* cmshalf.c */; };
+		FA5729AE2A5440C200FB1BAA /* ColorizeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5729AD2A5440C200FB1BAA /* ColorizeModel.swift */; };
+		FA5729B02A55C27400FB1BAA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FA5729AF2A55C27400FB1BAA /* GoogleService-Info.plist */; };
+		FA5729B42A55CFBE00FB1BAA /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = FA5729B32A55CFBE00FB1BAA /* FirebaseAnalytics */; };
+		FA5729B62A55CFBE00FB1BAA /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FA5729B52A55CFBE00FB1BAA /* FirebaseAnalyticsSwift */; };
+		FA5729B82A55CFBE00FB1BAA /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = FA5729B72A55CFBE00FB1BAA /* FirebaseCrashlytics */; };
+		FA5729BA2A55CFBE00FB1BAA /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = FA5729B92A55CFBE00FB1BAA /* FirebaseFirestore */; };
+		FA5729BC2A55CFBE00FB1BAA /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FA5729BB2A55CFBE00FB1BAA /* FirebaseFirestoreSwift */; };
+		FA5729BE2A55CFBE00FB1BAA /* FirebaseInstallations in Frameworks */ = {isa = PBXBuildFile; productRef = FA5729BD2A55CFBE00FB1BAA /* FirebaseInstallations */; };
+		FA5729C02A55CFBE00FB1BAA /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = FA5729BF2A55CFBE00FB1BAA /* FirebaseRemoteConfig */; };
+		FA5729C22A55CFBE00FB1BAA /* FirebaseRemoteConfigSwift in Frameworks */ = {isa = PBXBuildFile; productRef = FA5729C12A55CFBE00FB1BAA /* FirebaseRemoteConfigSwift */; };
+		FA5729C42A55CFBE00FB1BAA /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = FA5729C32A55CFBE00FB1BAA /* FirebaseStorage */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		FA5728D52A52DB9F00FB1BAA /* Colorize.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Colorize.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA5728D82A52DB9F00FB1BAA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		FA5728DC2A52DB9F00FB1BAA /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		FA5728E12A52DBA100FB1BAA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		FA5728E42A52DBA100FB1BAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		FA5728E62A52DBA100FB1BAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FA5728F82A52E8DF00FB1BAA /* Net.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Net.swift; sourceTree = "<group>"; };
+		FA5728FE2A52EB6900FB1BAA /* Data+Append.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Append.swift"; sourceTree = "<group>"; };
+		FA5729002A52F38200FB1BAA /* DownloadTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadTask.swift; sourceTree = "<group>"; };
+		FA5729052A531B9E00FB1BAA /* LayoutConfigurableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutConfigurableView.swift; sourceTree = "<group>"; };
+		FA5729532A532FD200FB1BAA /* UIImage+Scaled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Scaled.swift"; sourceTree = "<group>"; };
+		FA5729582A53FCE500FB1BAA /* ImageColorizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageColorizer.swift; sourceTree = "<group>"; };
+		FA57295A2A53FD1200FB1BAA /* DispatchQueue+Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Background.swift"; sourceTree = "<group>"; };
+		FA57295E2A5437FF00FB1BAA /* Colorize-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Colorize-Bridging-Header.h"; sourceTree = "<group>"; };
+		FA57295F2A5437FF00FB1BAA /* UIImage+Lab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Lab.h"; sourceTree = "<group>"; };
+		FA5729602A5437FF00FB1BAA /* UIViewController+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Utils.swift"; sourceTree = "<group>"; };
+		FA5729622A5437FF00FB1BAA /* UIImage+Lab.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "UIImage+Lab.mm"; sourceTree = "<group>"; };
+		FA5729642A5437FF00FB1BAA /* cmsps2.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cmsps2.c; sourceTree = "<group>"; };
+		FA5729652A5437FF00FB1BAA /* cmstypes.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cmstypes.c; sourceTree = "<group>"; };
+		FA5729662A5437FF00FB1BAA /* cmscgats.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cmscgats.c; sourceTree = "<group>"; };
+		FA5729672A5437FF00FB1BAA /* cmslut.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cmslut.c; sourceTree = "<group>"; };
+		FA5729682A5437FF00FB1BAA /* cmsopt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cmsopt.c; sourceTree = "<group>"; };
+		FA5729692A5437FF00FB1BAA /* cmssamp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cmssamp.c; sourceTree = "<group>"; };
+		FA57296A2A5437FF00FB1BAA /* sRGB_v4_ICC_preference.icc */ = {isa = PBXFileReference; lastKnownFileType = file; path = sRGB_v4_ICC_preference.icc; sourceTree = "<group>"; };
+		FA57296B2A5437FF00FB1BAA /* cmscnvrt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cmscnvrt.c; sourceTree = "<group>"; };
+		FA57296C2A5437FF00FB1BAA /* cmsmtrx.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cmsmtrx.c; sourceTree = "<group>"; };
+		FA57296D2A5437FF00FB1BAA /* lcms2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lcms2.h; sourceTree = "<group>"; };
+		FA57296E2A5437FF00FB1BAA /* cmsplugin.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cmsplugin.c; sourceTree = "<group>"; };
+		FA57296F2A5437FF00FB1BAA /* cmswtpnt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cmswtpnt.c; sourceTree = "<group>"; };
+		FA5729702A5437FF00FB1BAA /* cmsnamed.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cmsnamed.c; sourceTree = "<group>"; };
+		FA5729712A5437FF00FB1BAA /* cmsalpha.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cmsalpha.c; sourceTree = "<group>"; };
+		FA5729722A5437FF00FB1BAA /* cmsio0.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cmsio0.c; sourceTree = "<group>"; };
+		FA5729732A5437FF00FB1BAA /* cmsgamma.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cmsgamma.c; sourceTree = "<group>"; };
+		FA5729742A5437FF00FB1BAA /* Makefile.am */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Makefile.am; sourceTree = "<group>"; };
+		FA5729752A5437FF00FB1BAA /* cmscam02.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cmscam02.c; sourceTree = "<group>"; };
+		FA5729762A5437FF00FB1BAA /* cmssm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cmssm.c; sourceTree = "<group>"; };
+		FA5729772A5437FF00FB1BAA /* cmsxform.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cmsxform.c; sourceTree = "<group>"; };
+		FA5729782A5437FF00FB1BAA /* lcms2.def */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = lcms2.def; sourceTree = "<group>"; };
+		FA5729792A5437FF00FB1BAA /* cmsvirt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cmsvirt.c; sourceTree = "<group>"; };
+		FA57297A2A5437FF00FB1BAA /* cmserr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cmserr.c; sourceTree = "<group>"; };
+		FA57297B2A5437FF00FB1BAA /* cmsio1.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cmsio1.c; sourceTree = "<group>"; };
+		FA57297C2A5437FF00FB1BAA /* lcms2_internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lcms2_internal.h; sourceTree = "<group>"; };
+		FA57297D2A5437FF00FB1BAA /* cmsgmt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cmsgmt.c; sourceTree = "<group>"; };
+		FA57297E2A5437FF00FB1BAA /* cmspcs.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cmspcs.c; sourceTree = "<group>"; };
+		FA57297F2A5437FF00FB1BAA /* sRGB_ICC_v4_Appearance.icc */ = {isa = PBXFileReference; lastKnownFileType = file; path = sRGB_ICC_v4_Appearance.icc; sourceTree = "<group>"; };
+		FA5729802A5437FF00FB1BAA /* cmspack.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cmspack.c; sourceTree = "<group>"; };
+		FA5729812A5437FF00FB1BAA /* Makefile.in */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Makefile.in; sourceTree = "<group>"; };
+		FA5729822A5437FF00FB1BAA /* lcms2_plugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lcms2_plugin.h; sourceTree = "<group>"; };
+		FA5729832A5437FF00FB1BAA /* cmsmd5.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cmsmd5.c; sourceTree = "<group>"; };
+		FA5729842A5437FF00FB1BAA /* cmsintrp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cmsintrp.c; sourceTree = "<group>"; };
+		FA5729852A5437FF00FB1BAA /* cmshalf.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cmshalf.c; sourceTree = "<group>"; };
+		FA5729AD2A5440C200FB1BAA /* ColorizeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorizeModel.swift; sourceTree = "<group>"; };
+		FA5729AF2A55C27400FB1BAA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FA5728D22A52DB9F00FB1BAA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA5729BC2A55CFBE00FB1BAA /* FirebaseFirestoreSwift in Frameworks */,
+				FA5729C22A55CFBE00FB1BAA /* FirebaseRemoteConfigSwift in Frameworks */,
+				FA5729C42A55CFBE00FB1BAA /* FirebaseStorage in Frameworks */,
+				FA5729B82A55CFBE00FB1BAA /* FirebaseCrashlytics in Frameworks */,
+				FA5729BA2A55CFBE00FB1BAA /* FirebaseFirestore in Frameworks */,
+				FA5729C02A55CFBE00FB1BAA /* FirebaseRemoteConfig in Frameworks */,
+				FA5729BE2A55CFBE00FB1BAA /* FirebaseInstallations in Frameworks */,
+				FA5729B62A55CFBE00FB1BAA /* FirebaseAnalyticsSwift in Frameworks */,
+				FA5729B42A55CFBE00FB1BAA /* FirebaseAnalytics in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FA5728CC2A52DB9F00FB1BAA = {
+			isa = PBXGroup;
+			children = (
+				FA5728D72A52DB9F00FB1BAA /* Colorize */,
+				FA5728D62A52DB9F00FB1BAA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FA5728D62A52DB9F00FB1BAA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FA5728D52A52DB9F00FB1BAA /* Colorize.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FA5728D72A52DB9F00FB1BAA /* Colorize */ = {
+			isa = PBXGroup;
+			children = (
+				FA5728F12A52E7FB00FB1BAA /* Source */,
+				FA5728D82A52DB9F00FB1BAA /* AppDelegate.swift */,
+				FA5728E12A52DBA100FB1BAA /* Assets.xcassets */,
+				FA5729AF2A55C27400FB1BAA /* GoogleService-Info.plist */,
+				FA5728E32A52DBA100FB1BAA /* LaunchScreen.storyboard */,
+				FA5728E62A52DBA100FB1BAA /* Info.plist */,
+			);
+			path = Colorize;
+			sourceTree = "<group>";
+		};
+		FA5728F12A52E7FB00FB1BAA /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				FA5729022A531B9E00FB1BAA /* Utils */,
+				FA5728FD2A52EB5C00FB1BAA /* Extensions */,
+				FA5728F72A52E8D400FB1BAA /* Managers */,
+				FA5728F22A52E80100FB1BAA /* Features */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		FA5728F22A52E80100FB1BAA /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				FA5728F32A52E80C00FB1BAA /* Main */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		FA5728F32A52E80C00FB1BAA /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				FA5728F42A52E85B00FB1BAA /* Presentation */,
+				FA5728F52A52E86200FB1BAA /* Domain */,
+				FA5728F62A52E86800FB1BAA /* Data */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		FA5728F42A52E85B00FB1BAA /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				FA5728DC2A52DB9F00FB1BAA /* MainViewController.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		FA5728F52A52E86200FB1BAA /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		FA5728F62A52E86800FB1BAA /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		FA5728F72A52E8D400FB1BAA /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				FA5729AC2A5440B300FB1BAA /* ImageColorizer */,
+				FA5728FA2A52EB1900FB1BAA /* Net */,
+				FA5729582A53FCE500FB1BAA /* ImageColorizer.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		FA5728FA2A52EB1900FB1BAA /* Net */ = {
+			isa = PBXGroup;
+			children = (
+				FA5728F82A52E8DF00FB1BAA /* Net.swift */,
+				FA5729002A52F38200FB1BAA /* DownloadTask.swift */,
+			);
+			path = Net;
+			sourceTree = "<group>";
+		};
+		FA5728FD2A52EB5C00FB1BAA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FA5728FE2A52EB6900FB1BAA /* Data+Append.swift */,
+				FA5729532A532FD200FB1BAA /* UIImage+Scaled.swift */,
+				FA57295A2A53FD1200FB1BAA /* DispatchQueue+Background.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FA5729022A531B9E00FB1BAA /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				FA57295C2A5437FF00FB1BAA /* ColorizeUtils */,
+				FA5729052A531B9E00FB1BAA /* LayoutConfigurableView.swift */,
+			);
+			name = Utils;
+			path = Utils/Utils;
+			sourceTree = "<group>";
+		};
+		FA57295C2A5437FF00FB1BAA /* ColorizeUtils */ = {
+			isa = PBXGroup;
+			children = (
+				FA57295E2A5437FF00FB1BAA /* Colorize-Bridging-Header.h */,
+				FA57295F2A5437FF00FB1BAA /* UIImage+Lab.h */,
+				FA5729602A5437FF00FB1BAA /* UIViewController+Utils.swift */,
+				FA5729622A5437FF00FB1BAA /* UIImage+Lab.mm */,
+				FA5729632A5437FF00FB1BAA /* littlecms */,
+			);
+			path = ColorizeUtils;
+			sourceTree = "<group>";
+		};
+		FA5729632A5437FF00FB1BAA /* littlecms */ = {
+			isa = PBXGroup;
+			children = (
+				FA5729642A5437FF00FB1BAA /* cmsps2.c */,
+				FA5729652A5437FF00FB1BAA /* cmstypes.c */,
+				FA5729662A5437FF00FB1BAA /* cmscgats.c */,
+				FA5729672A5437FF00FB1BAA /* cmslut.c */,
+				FA5729682A5437FF00FB1BAA /* cmsopt.c */,
+				FA5729692A5437FF00FB1BAA /* cmssamp.c */,
+				FA57296A2A5437FF00FB1BAA /* sRGB_v4_ICC_preference.icc */,
+				FA57296B2A5437FF00FB1BAA /* cmscnvrt.c */,
+				FA57296C2A5437FF00FB1BAA /* cmsmtrx.c */,
+				FA57296D2A5437FF00FB1BAA /* lcms2.h */,
+				FA57296E2A5437FF00FB1BAA /* cmsplugin.c */,
+				FA57296F2A5437FF00FB1BAA /* cmswtpnt.c */,
+				FA5729702A5437FF00FB1BAA /* cmsnamed.c */,
+				FA5729712A5437FF00FB1BAA /* cmsalpha.c */,
+				FA5729722A5437FF00FB1BAA /* cmsio0.c */,
+				FA5729732A5437FF00FB1BAA /* cmsgamma.c */,
+				FA5729742A5437FF00FB1BAA /* Makefile.am */,
+				FA5729752A5437FF00FB1BAA /* cmscam02.c */,
+				FA5729762A5437FF00FB1BAA /* cmssm.c */,
+				FA5729772A5437FF00FB1BAA /* cmsxform.c */,
+				FA5729782A5437FF00FB1BAA /* lcms2.def */,
+				FA5729792A5437FF00FB1BAA /* cmsvirt.c */,
+				FA57297A2A5437FF00FB1BAA /* cmserr.c */,
+				FA57297B2A5437FF00FB1BAA /* cmsio1.c */,
+				FA57297C2A5437FF00FB1BAA /* lcms2_internal.h */,
+				FA57297D2A5437FF00FB1BAA /* cmsgmt.c */,
+				FA57297E2A5437FF00FB1BAA /* cmspcs.c */,
+				FA57297F2A5437FF00FB1BAA /* sRGB_ICC_v4_Appearance.icc */,
+				FA5729802A5437FF00FB1BAA /* cmspack.c */,
+				FA5729812A5437FF00FB1BAA /* Makefile.in */,
+				FA5729822A5437FF00FB1BAA /* lcms2_plugin.h */,
+				FA5729832A5437FF00FB1BAA /* cmsmd5.c */,
+				FA5729842A5437FF00FB1BAA /* cmsintrp.c */,
+				FA5729852A5437FF00FB1BAA /* cmshalf.c */,
+			);
+			path = littlecms;
+			sourceTree = "<group>";
+		};
+		FA5729AC2A5440B300FB1BAA /* ImageColorizer */ = {
+			isa = PBXGroup;
+			children = (
+				FA5729AD2A5440C200FB1BAA /* ColorizeModel.swift */,
+			);
+			path = ImageColorizer;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FA5728D42A52DB9F00FB1BAA /* Colorize */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA5728E92A52DBA100FB1BAA /* Build configuration list for PBXNativeTarget "Colorize" */;
+			buildPhases = (
+				FA5728D12A52DB9F00FB1BAA /* Sources */,
+				FA5728D22A52DB9F00FB1BAA /* Frameworks */,
+				FA5728D32A52DB9F00FB1BAA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Colorize;
+			packageProductDependencies = (
+				FA5729B32A55CFBE00FB1BAA /* FirebaseAnalytics */,
+				FA5729B52A55CFBE00FB1BAA /* FirebaseAnalyticsSwift */,
+				FA5729B72A55CFBE00FB1BAA /* FirebaseCrashlytics */,
+				FA5729B92A55CFBE00FB1BAA /* FirebaseFirestore */,
+				FA5729BB2A55CFBE00FB1BAA /* FirebaseFirestoreSwift */,
+				FA5729BD2A55CFBE00FB1BAA /* FirebaseInstallations */,
+				FA5729BF2A55CFBE00FB1BAA /* FirebaseRemoteConfig */,
+				FA5729C12A55CFBE00FB1BAA /* FirebaseRemoteConfigSwift */,
+				FA5729C32A55CFBE00FB1BAA /* FirebaseStorage */,
+			);
+			productName = Colorize;
+			productReference = FA5728D52A52DB9F00FB1BAA /* Colorize.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FA5728CD2A52DB9F00FB1BAA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					FA5728D42A52DB9F00FB1BAA = {
+						CreatedOnToolsVersion = 14.2;
+					};
+				};
+			};
+			buildConfigurationList = FA5728D02A52DB9F00FB1BAA /* Build configuration list for PBXProject "Colorize" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = FA5728CC2A52DB9F00FB1BAA;
+			packageReferences = (
+				FA5729B22A55CFBE00FB1BAA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
+			productRefGroup = FA5728D62A52DB9F00FB1BAA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FA5728D42A52DB9F00FB1BAA /* Colorize */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FA5728D32A52DB9F00FB1BAA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA5728E52A52DBA100FB1BAA /* LaunchScreen.storyboard in Resources */,
+				FA5729B02A55C27400FB1BAA /* GoogleService-Info.plist in Resources */,
+				FA5729A32A5437FF00FB1BAA /* sRGB_ICC_v4_Appearance.icc in Resources */,
+				FA57299D2A5437FF00FB1BAA /* lcms2.def in Resources */,
+				FA5729A52A5437FF00FB1BAA /* Makefile.in in Resources */,
+				FA5729992A5437FF00FB1BAA /* Makefile.am in Resources */,
+				FA5728E22A52DBA100FB1BAA /* Assets.xcassets in Resources */,
+				FA5729902A5437FF00FB1BAA /* sRGB_v4_ICC_preference.icc in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FA5728D12A52DB9F00FB1BAA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA5729A42A5437FF00FB1BAA /* cmspack.c in Sources */,
+				FA5729A12A5437FF00FB1BAA /* cmsgmt.c in Sources */,
+				FA57298C2A5437FF00FB1BAA /* cmscgats.c in Sources */,
+				FA5729A72A5437FF00FB1BAA /* cmsintrp.c in Sources */,
+				FA57298E2A5437FF00FB1BAA /* cmsopt.c in Sources */,
+				FA57299C2A5437FF00FB1BAA /* cmsxform.c in Sources */,
+				FA5728DD2A52DB9F00FB1BAA /* MainViewController.swift in Sources */,
+				FA5729982A5437FF00FB1BAA /* cmsgamma.c in Sources */,
+				FA57299F2A5437FF00FB1BAA /* cmserr.c in Sources */,
+				FA57298A2A5437FF00FB1BAA /* cmsps2.c in Sources */,
+				FA5729A02A5437FF00FB1BAA /* cmsio1.c in Sources */,
+				FA5729A22A5437FF00FB1BAA /* cmspcs.c in Sources */,
+				FA57299A2A5437FF00FB1BAA /* cmscam02.c in Sources */,
+				FA5729892A5437FF00FB1BAA /* UIImage+Lab.mm in Sources */,
+				FA5729922A5437FF00FB1BAA /* cmsmtrx.c in Sources */,
+				FA57292E2A531B9E00FB1BAA /* LayoutConfigurableView.swift in Sources */,
+				FA5729912A5437FF00FB1BAA /* cmscnvrt.c in Sources */,
+				FA57298D2A5437FF00FB1BAA /* cmslut.c in Sources */,
+				FA5729932A5437FF00FB1BAA /* cmsplugin.c in Sources */,
+				FA57295B2A53FD1200FB1BAA /* DispatchQueue+Background.swift in Sources */,
+				FA5729972A5437FF00FB1BAA /* cmsio0.c in Sources */,
+				FA5729962A5437FF00FB1BAA /* cmsalpha.c in Sources */,
+				FA5728D92A52DB9F00FB1BAA /* AppDelegate.swift in Sources */,
+				FA5729942A5437FF00FB1BAA /* cmswtpnt.c in Sources */,
+				FA57298F2A5437FF00FB1BAA /* cmssamp.c in Sources */,
+				FA57298B2A5437FF00FB1BAA /* cmstypes.c in Sources */,
+				FA5729592A53FCE500FB1BAA /* ImageColorizer.swift in Sources */,
+				FA5729872A5437FF00FB1BAA /* UIViewController+Utils.swift in Sources */,
+				FA57299E2A5437FF00FB1BAA /* cmsvirt.c in Sources */,
+				FA5729A82A5437FF00FB1BAA /* cmshalf.c in Sources */,
+				FA5729AE2A5440C200FB1BAA /* ColorizeModel.swift in Sources */,
+				FA5729A62A5437FF00FB1BAA /* cmsmd5.c in Sources */,
+				FA5729542A532FD200FB1BAA /* UIImage+Scaled.swift in Sources */,
+				FA5729952A5437FF00FB1BAA /* cmsnamed.c in Sources */,
+				FA5728FF2A52EB6900FB1BAA /* Data+Append.swift in Sources */,
+				FA5729012A52F38200FB1BAA /* DownloadTask.swift in Sources */,
+				FA57299B2A5437FF00FB1BAA /* cmssm.c in Sources */,
+				FA5728F92A52E8DF00FB1BAA /* Net.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FA5728E32A52DBA100FB1BAA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FA5728E42A52DBA100FB1BAA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FA5728E72A52DBA100FB1BAA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		FA5728E82A52DBA100FB1BAA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FA5728EA2A52DBA100FB1BAA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Colorize/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app requires access to the camera.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app requires access to the photo library.";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = reganomika.z.s.colorizer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Colorize/Source/Utils/Utils/ColorizeUtils/Colorize-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		FA5728EB2A52DBA100FB1BAA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Colorize/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app requires access to the camera.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app requires access to the photo library.";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = reganomika.z.s.colorizer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Colorize/Source/Utils/Utils/ColorizeUtils/Colorize-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FA5728D02A52DB9F00FB1BAA /* Build configuration list for PBXProject "Colorize" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA5728E72A52DBA100FB1BAA /* Debug */,
+				FA5728E82A52DBA100FB1BAA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA5728E92A52DBA100FB1BAA /* Build configuration list for PBXNativeTarget "Colorize" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA5728EA2A52DBA100FB1BAA /* Debug */,
+				FA5728EB2A52DBA100FB1BAA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FA5729B22A55CFBE00FB1BAA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = exactVersion;
+				version = 9.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FA5729B32A55CFBE00FB1BAA /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA5729B22A55CFBE00FB1BAA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		FA5729B52A55CFBE00FB1BAA /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA5729B22A55CFBE00FB1BAA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+		FA5729B72A55CFBE00FB1BAA /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA5729B22A55CFBE00FB1BAA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		FA5729B92A55CFBE00FB1BAA /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA5729B22A55CFBE00FB1BAA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		FA5729BB2A55CFBE00FB1BAA /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA5729B22A55CFBE00FB1BAA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		FA5729BD2A55CFBE00FB1BAA /* FirebaseInstallations */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA5729B22A55CFBE00FB1BAA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseInstallations;
+		};
+		FA5729BF2A55CFBE00FB1BAA /* FirebaseRemoteConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA5729B22A55CFBE00FB1BAA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfig;
+		};
+		FA5729C12A55CFBE00FB1BAA /* FirebaseRemoteConfigSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA5729B22A55CFBE00FB1BAA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfigSwift;
+		};
+		FA5729C32A55CFBE00FB1BAA /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA5729B22A55CFBE00FB1BAA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = FA5728CD2A52DB9F00FB1BAA /* Project object */;
+}
