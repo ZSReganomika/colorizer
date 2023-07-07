@@ -63,6 +63,15 @@
 		FA5729DB2A56EB6800FB1BAA /* ColorizeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5729DA2A56EB6800FB1BAA /* ColorizeModel.swift */; };
 		FA5729DD2A56EB8100FB1BAA /* Units.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5729DC2A56EB8100FB1BAA /* Units.swift */; };
 		FA5729E02A57051000FB1BAA /* HistoryItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5729DF2A57051000FB1BAA /* HistoryItemCell.swift */; };
+		FA5729E22A5883AB00FB1BAA /* DownloadModelUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5729E12A5883AB00FB1BAA /* DownloadModelUseCase.swift */; };
+		FA5729E42A58840C00FB1BAA /* DownloadModelRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5729E32A58840C00FB1BAA /* DownloadModelRepositoryProtocol.swift */; };
+		FA5729E62A58848100FB1BAA /* DownloadModelRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5729E52A58848100FB1BAA /* DownloadModelRepository.swift */; };
+		FA5729E92A58863600FB1BAA /* ProgressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5729E82A58863600FB1BAA /* ProgressModel.swift */; };
+		FA5729EB2A58870400FB1BAA /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5729EA2A58870400FB1BAA /* MainViewModel.swift */; };
+		FA5729ED2A58886100FB1BAA /* ColorizeModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5729EC2A58886100FB1BAA /* ColorizeModels.swift */; };
+		FA5729EF2A5889AC00FB1BAA /* MainModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5729EE2A5889AC00FB1BAA /* MainModels.swift */; };
+		FA5729F12A588A9F00FB1BAA /* MainFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5729F02A588A9F00FB1BAA /* MainFactory.swift */; };
+		FA5729F32A588B7800FB1BAA /* BindingConfigurableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5729F22A588B7800FB1BAA /* BindingConfigurableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -120,6 +129,15 @@
 		FA5729DA2A56EB6800FB1BAA /* ColorizeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorizeModel.swift; sourceTree = "<group>"; };
 		FA5729DC2A56EB8100FB1BAA /* Units.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Units.swift; sourceTree = "<group>"; };
 		FA5729DF2A57051000FB1BAA /* HistoryItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryItemCell.swift; sourceTree = "<group>"; };
+		FA5729E12A5883AB00FB1BAA /* DownloadModelUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadModelUseCase.swift; sourceTree = "<group>"; };
+		FA5729E32A58840C00FB1BAA /* DownloadModelRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadModelRepositoryProtocol.swift; sourceTree = "<group>"; };
+		FA5729E52A58848100FB1BAA /* DownloadModelRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadModelRepository.swift; sourceTree = "<group>"; };
+		FA5729E82A58863600FB1BAA /* ProgressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressModel.swift; sourceTree = "<group>"; };
+		FA5729EA2A58870400FB1BAA /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		FA5729EC2A58886100FB1BAA /* ColorizeModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorizeModels.swift; sourceTree = "<group>"; };
+		FA5729EE2A5889AC00FB1BAA /* MainModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModels.swift; sourceTree = "<group>"; };
+		FA5729F02A588A9F00FB1BAA /* MainFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFactory.swift; sourceTree = "<group>"; };
+		FA5729F22A588B7800FB1BAA /* BindingConfigurableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingConfigurableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +215,7 @@
 				FA5728F42A52E85B00FB1BAA /* Presentation */,
 				FA5728F52A52E86200FB1BAA /* Domain */,
 				FA5728F62A52E86800FB1BAA /* Data */,
+				FA5729F02A588A9F00FB1BAA /* MainFactory.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -206,6 +225,8 @@
 			children = (
 				FA5729DE2A5704FE00FB1BAA /* Cell */,
 				FA5728DC2A52DB9F00FB1BAA /* MainViewController.swift */,
+				FA5729EA2A58870400FB1BAA /* MainViewModel.swift */,
+				FA5729EE2A5889AC00FB1BAA /* MainModels.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -213,6 +234,9 @@
 		FA5728F52A52E86200FB1BAA /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				FA5729E72A58862200FB1BAA /* Entity */,
+				FA5729E12A5883AB00FB1BAA /* DownloadModelUseCase.swift */,
+				FA5729E32A58840C00FB1BAA /* DownloadModelRepositoryProtocol.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -220,6 +244,7 @@
 		FA5728F62A52E86800FB1BAA /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				FA5729E52A58848100FB1BAA /* DownloadModelRepository.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -245,9 +270,10 @@
 		FA5729022A531B9E00FB1BAA /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				FA5729F22A588B7800FB1BAA /* BindingConfigurableView.swift */,
+				FA5729052A531B9E00FB1BAA /* LayoutConfigurableView.swift */,
 				FA5729DC2A56EB8100FB1BAA /* Units.swift */,
 				FA57295C2A5437FF00FB1BAA /* ColorizeUtils */,
-				FA5729052A531B9E00FB1BAA /* LayoutConfigurableView.swift */,
 			);
 			name = Utils;
 			path = Utils/Utils;
@@ -333,8 +359,9 @@
 		FA5729D52A56E3C000FB1BAA /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				FA5729D62A56E3C000FB1BAA /* ColorizeViewModel.swift */,
 				FA5729D72A56E3C000FB1BAA /* ColorizeViewController.swift */,
+				FA5729D62A56E3C000FB1BAA /* ColorizeViewModel.swift */,
+				FA5729EC2A58886100FB1BAA /* ColorizeModels.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -345,6 +372,14 @@
 				FA5729DF2A57051000FB1BAA /* HistoryItemCell.swift */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		FA5729E72A58862200FB1BAA /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				FA5729E82A58863600FB1BAA /* ProgressModel.swift */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -449,14 +484,18 @@
 				FA57298A2A5437FF00FB1BAA /* cmsps2.c in Sources */,
 				FA5729A02A5437FF00FB1BAA /* cmsio1.c in Sources */,
 				FA5729A22A5437FF00FB1BAA /* cmspcs.c in Sources */,
+				FA5729E92A58863600FB1BAA /* ProgressModel.swift in Sources */,
 				FA5729E02A57051000FB1BAA /* HistoryItemCell.swift in Sources */,
 				FA57299A2A5437FF00FB1BAA /* cmscam02.c in Sources */,
 				FA5729892A5437FF00FB1BAA /* UIImage+Lab.mm in Sources */,
+				FA5729EF2A5889AC00FB1BAA /* MainModels.swift in Sources */,
+				FA5729E22A5883AB00FB1BAA /* DownloadModelUseCase.swift in Sources */,
 				FA5729922A5437FF00FB1BAA /* cmsmtrx.c in Sources */,
 				FA57292E2A531B9E00FB1BAA /* LayoutConfigurableView.swift in Sources */,
 				FA5729912A5437FF00FB1BAA /* cmscnvrt.c in Sources */,
 				FA57298D2A5437FF00FB1BAA /* cmslut.c in Sources */,
 				FA5729932A5437FF00FB1BAA /* cmsplugin.c in Sources */,
+				FA5729F12A588A9F00FB1BAA /* MainFactory.swift in Sources */,
 				FA57295B2A53FD1200FB1BAA /* DispatchQueue+Background.swift in Sources */,
 				FA5729972A5437FF00FB1BAA /* cmsio0.c in Sources */,
 				FA5729962A5437FF00FB1BAA /* cmsalpha.c in Sources */,
@@ -465,6 +504,7 @@
 				FA57298F2A5437FF00FB1BAA /* cmssamp.c in Sources */,
 				FA57298B2A5437FF00FB1BAA /* cmstypes.c in Sources */,
 				FA5729592A53FCE500FB1BAA /* ImageColorizer.swift in Sources */,
+				FA5729E62A58848100FB1BAA /* DownloadModelRepository.swift in Sources */,
 				FA57299E2A5437FF00FB1BAA /* cmsvirt.c in Sources */,
 				FA5729DB2A56EB6800FB1BAA /* ColorizeModel.swift in Sources */,
 				FA5729A82A5437FF00FB1BAA /* cmshalf.c in Sources */,
@@ -473,9 +513,13 @@
 				FA5729D92A56E3C000FB1BAA /* ColorizeViewController.swift in Sources */,
 				FA5729542A532FD200FB1BAA /* UIImage+Scaled.swift in Sources */,
 				FA5729952A5437FF00FB1BAA /* cmsnamed.c in Sources */,
+				FA5729E42A58840C00FB1BAA /* DownloadModelRepositoryProtocol.swift in Sources */,
+				FA5729ED2A58886100FB1BAA /* ColorizeModels.swift in Sources */,
 				FA5729D82A56E3C000FB1BAA /* ColorizeViewModel.swift in Sources */,
 				FA5728FF2A52EB6900FB1BAA /* Data+Append.swift in Sources */,
 				FA57299B2A5437FF00FB1BAA /* cmssm.c in Sources */,
+				FA5729EB2A58870400FB1BAA /* MainViewModel.swift in Sources */,
+				FA5729F32A588B7800FB1BAA /* BindingConfigurableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

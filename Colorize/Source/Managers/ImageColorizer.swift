@@ -2,25 +2,41 @@ import UIKit
 import CoreML
 import Colorful
 
-final class ImageColorizer {
+protocol ImageColorizerProtocol {
+    func colorize(
+        image: UIImage,
+        completion: @escaping (Result<UIImage, Error>) -> Void
+    )
+}
+
+final class ImageColorizer: ImageColorizerProtocol {
 
     var model: MLModel?
 
-    func colorize(image inputImage: UIImage, completion: @escaping (Result<UIImage, Error>) -> Void)  {
+    func colorize(
+        image: UIImage,
+        completion: @escaping (Result<UIImage, Error>) -> Void
+    ) {
         DispatchQueue.background.async {
             if let model = self.model {
-                let result = self.colorize(image: inputImage, model: model)
+                let result = self.colorize(
+                    image: image,
+                    model: model
+                )
                 completion(result)
             } else {
                 self.configureModelAndColorize(
-                    inputImage: inputImage,
+                    image: image,
                     completion: completion
                 )
             }
         }
     }
 
-    func configureModelAndColorize(inputImage: UIImage, completion: (Result<UIImage, Error>) -> Void) {
+    func configureModelAndColorize(
+        image: UIImage,
+        completion: (Result<UIImage, Error>) -> Void
+    ) {
         do {
             if let filename = UserDefaults.standard.string(forKey: "ml_model_destination") {
                 let fileManager = FileManager.default
@@ -35,7 +51,10 @@ final class ImageColorizer {
 
                 let model = try MLModel(contentsOf: permanentUrl)
                 self.model = model
-                let result = self.colorize(image: inputImage, model: model)
+                let result = self.colorize(
+                    image: image,
+                    model: model
+                )
                 completion(result)
             } else {
                 fatalError("fail to get url")

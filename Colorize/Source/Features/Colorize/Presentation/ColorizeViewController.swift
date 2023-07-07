@@ -6,22 +6,18 @@ import Combine
 
 final class ColorizeViewController: UIViewController {
 
-    // MARK: - Private properties
+    // MARK: - GUI
 
     private var postPhotoButton = UIButton()
     private var imagePicker = UIImagePickerController()
     private var imageView = UIImageView()
+
 
     // MARK: - Life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureView()
-        configureModel()
-    }
-
-    func configureModel() {
-
     }
 }
 
@@ -30,7 +26,7 @@ final class ColorizeViewController: UIViewController {
 extension ColorizeViewController: LayoutConfigurableView {
 
     func configureViewProperties() {
-        title = "Main"
+        title = "Colorize"
 
         view.backgroundColor = .white
         view.addSubview(postPhotoButton)

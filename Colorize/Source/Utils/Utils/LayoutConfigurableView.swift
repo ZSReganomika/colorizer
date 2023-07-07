@@ -1,15 +1,15 @@
-public protocol LayoutConfigurableView {
+protocol LayoutConfigurableView {
     func configureView()
     func configureViewProperties()
     func configureSubviews()
     func configureLayout()
 }
 
-public extension LayoutConfigurableView {
+extension LayoutConfigurableView {
     func configureView() {
-        self.configureViewProperties()
-        self.configureSubviews()
-        self.configureLayout()
+        configureViewProperties()
+        configureSubviews()
+        configureLayout()
     }
 
     func configureViewProperties() {}
@@ -17,3 +17,11 @@ public extension LayoutConfigurableView {
     func configureLayout() {}
 }
 
+extension LayoutConfigurableView where Self: BindingConfigurableView {
+    func configureView() {
+        configureViewProperties()
+        configureSubviews()
+        configureLayout()
+        configureBinding()
+    }
+}

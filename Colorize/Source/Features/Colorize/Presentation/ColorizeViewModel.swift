@@ -1,6 +1,11 @@
 import Foundation
 import Combine
 
-final class ColorizeViewModel {
-
+protocol ColorizeViewModelProtocol {
+    var state: PassthroughSubject<ColorizeModels.State, Never> { get }
 }
+
+final class ColorizeViewModel: ColorizeViewModelProtocol {
+    var state = PassthroughSubject<ColorizeModels.State, Never>()
+}
+
