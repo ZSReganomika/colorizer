@@ -298,7 +298,11 @@ extension MainViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.row == 0 {
-            
+            let viewController = ColorizeFactory().getColorizeController()
+            navigationController?.pushViewController(
+                viewController,
+                animated: true
+            )
         }
     }
 }

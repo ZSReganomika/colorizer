@@ -6,12 +6,27 @@ import Combine
 
 final class ColorizeViewController: UIViewController {
 
+    // MARK: - Private properties
+
+    private let viewModel: ColorizeViewModelProtocol
+    private var cancellables: Set<AnyCancellable> = []
+
     // MARK: - GUI
 
     private var postPhotoButton = UIButton()
     private var imagePicker = UIImagePickerController()
     private var imageView = UIImageView()
 
+    // MARK: - Initialization
+
+    init(viewModel: ColorizeViewModelProtocol) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     // MARK: - Life cycle
 
@@ -42,6 +57,26 @@ extension ColorizeViewController: LayoutConfigurableView {
     func configureLayout() {
         configurePostPhotoButtonLayout()
         configureImageViewLayout()
+    }
+}
+
+// MARK: - LayoutConfigurableView
+
+extension ColorizeViewController: BindingConfigurableView {
+
+    func bindInput() {
+        viewModel
+            .state
+            .sink { state in
+                switch state {
+                case let .resultImage(image):
+                    DispatchQueue.main.async {
+                        self.imageView.image = image
+                    }
+                case let .error(error):
+                    print(error)
+                }
+            }.store(in: &cancellables)
     }
 }
 
@@ -135,7 +170,7 @@ extension ColorizeViewController: UIImagePickerControllerDelegate & UINavigation
     ) {
         guard let image = info[.originalImage] as? UIImage else { return }
 
-        colorize(image: image)
+        colorize(inputImage: image)
 
         picker.dismiss(animated: true)
     }
@@ -150,17 +185,8 @@ private extension ColorizeViewController {
         present(imagePicker, animated: true)
     }
 
-    func colorize(image: UIImage) {
-        ImageColorizer().colorize(image: image) { result in
-            switch result {
-            case let .success(resultImage):
-                DispatchQueue.main.async {
-                    self.imageView.image = resultImage
-                }
-            case let .failure(error):
-                print(error.localizedDescription)
-            }
-        }
+    func colorize(inputImage: UIImage) {
+        viewModel.colorize(inputImage: inputImage)
     }
 }
 

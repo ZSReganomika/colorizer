@@ -73,6 +73,10 @@
 		FA5729F12A588A9F00FB1BAA /* MainFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5729F02A588A9F00FB1BAA /* MainFactory.swift */; };
 		FA5729F32A588B7800FB1BAA /* BindingConfigurableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5729F22A588B7800FB1BAA /* BindingConfigurableView.swift */; };
 		FA5729F52A59718B00FB1BAA /* AddNewItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5729F42A59718B00FB1BAA /* AddNewItemCell.swift */; };
+		FA5729F72A59765C00FB1BAA /* ColorizeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5729F62A59765C00FB1BAA /* ColorizeFactory.swift */; };
+		FA5729FE2A5976EA00FB1BAA /* ColorizeRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5729FD2A5976EA00FB1BAA /* ColorizeRepositoryProtocol.swift */; };
+		FA572A002A59774600FB1BAA /* ColorizeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5729FF2A59774600FB1BAA /* ColorizeUseCase.swift */; };
+		FA572A042A5977AF00FB1BAA /* ColorizeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A032A5977AF00FB1BAA /* ColorizeRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -140,6 +144,10 @@
 		FA5729F02A588A9F00FB1BAA /* MainFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFactory.swift; sourceTree = "<group>"; };
 		FA5729F22A588B7800FB1BAA /* BindingConfigurableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingConfigurableView.swift; sourceTree = "<group>"; };
 		FA5729F42A59718B00FB1BAA /* AddNewItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewItemCell.swift; sourceTree = "<group>"; };
+		FA5729F62A59765C00FB1BAA /* ColorizeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorizeFactory.swift; sourceTree = "<group>"; };
+		FA5729FD2A5976EA00FB1BAA /* ColorizeRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorizeRepositoryProtocol.swift; sourceTree = "<group>"; };
+		FA5729FF2A59774600FB1BAA /* ColorizeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorizeUseCase.swift; sourceTree = "<group>"; };
+		FA572A032A5977AF00FB1BAA /* ColorizeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorizeRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,8 +245,8 @@
 			isa = PBXGroup;
 			children = (
 				FA5729E72A58862200FB1BAA /* Entity */,
-				FA5729E12A5883AB00FB1BAA /* DownloadModelUseCase.swift */,
-				FA5729E32A58840C00FB1BAA /* DownloadModelRepositoryProtocol.swift */,
+				FA5729F92A5976A500FB1BAA /* Repository */,
+				FA5729FA2A5976AF00FB1BAA /* UseCase */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -246,7 +254,7 @@
 		FA5728F62A52E86800FB1BAA /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				FA5729E52A58848100FB1BAA /* DownloadModelRepository.swift */,
+				FA572A012A59779600FB1BAA /* Repository */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -340,6 +348,7 @@
 				FA5729D52A56E3C000FB1BAA /* Presentation */,
 				FA5729D42A56E3C000FB1BAA /* Domain */,
 				FA5729D32A56E3C000FB1BAA /* Data */,
+				FA5729F62A59765C00FB1BAA /* ColorizeFactory.swift */,
 			);
 			path = Colorize;
 			sourceTree = "<group>";
@@ -347,6 +356,7 @@
 		FA5729D32A56E3C000FB1BAA /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				FA572A022A5977A000FB1BAA /* Repository */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -354,6 +364,9 @@
 		FA5729D42A56E3C000FB1BAA /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				FA5729F82A59769B00FB1BAA /* Entity */,
+				FA5729FB2A5976C100FB1BAA /* Repository */,
+				FA5729FC2A5976C800FB1BAA /* UseCase */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -383,6 +396,61 @@
 				FA5729E82A58863600FB1BAA /* ProgressModel.swift */,
 			);
 			path = Entity;
+			sourceTree = "<group>";
+		};
+		FA5729F82A59769B00FB1BAA /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		FA5729F92A5976A500FB1BAA /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				FA5729E32A58840C00FB1BAA /* DownloadModelRepositoryProtocol.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		FA5729FA2A5976AF00FB1BAA /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				FA5729E12A5883AB00FB1BAA /* DownloadModelUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		FA5729FB2A5976C100FB1BAA /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				FA5729FD2A5976EA00FB1BAA /* ColorizeRepositoryProtocol.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		FA5729FC2A5976C800FB1BAA /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				FA5729FF2A59774600FB1BAA /* ColorizeUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		FA572A012A59779600FB1BAA /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				FA5729E52A58848100FB1BAA /* DownloadModelRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		FA572A022A5977A000FB1BAA /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				FA572A032A5977AF00FB1BAA /* ColorizeRepository.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -484,12 +552,14 @@
 				FA5728DD2A52DB9F00FB1BAA /* MainViewController.swift in Sources */,
 				FA5729982A5437FF00FB1BAA /* cmsgamma.c in Sources */,
 				FA57299F2A5437FF00FB1BAA /* cmserr.c in Sources */,
+				FA5729FE2A5976EA00FB1BAA /* ColorizeRepositoryProtocol.swift in Sources */,
 				FA57298A2A5437FF00FB1BAA /* cmsps2.c in Sources */,
 				FA5729A02A5437FF00FB1BAA /* cmsio1.c in Sources */,
 				FA5729A22A5437FF00FB1BAA /* cmspcs.c in Sources */,
 				FA5729E92A58863600FB1BAA /* ProgressModel.swift in Sources */,
 				FA5729E02A57051000FB1BAA /* HistoryItemCell.swift in Sources */,
 				FA57299A2A5437FF00FB1BAA /* cmscam02.c in Sources */,
+				FA5729F72A59765C00FB1BAA /* ColorizeFactory.swift in Sources */,
 				FA5729892A5437FF00FB1BAA /* UIImage+Lab.mm in Sources */,
 				FA5729EF2A5889AC00FB1BAA /* MainModels.swift in Sources */,
 				FA5729E22A5883AB00FB1BAA /* DownloadModelUseCase.swift in Sources */,
@@ -503,6 +573,7 @@
 				FA5729972A5437FF00FB1BAA /* cmsio0.c in Sources */,
 				FA5729962A5437FF00FB1BAA /* cmsalpha.c in Sources */,
 				FA5728D92A52DB9F00FB1BAA /* AppDelegate.swift in Sources */,
+				FA572A042A5977AF00FB1BAA /* ColorizeRepository.swift in Sources */,
 				FA5729942A5437FF00FB1BAA /* cmswtpnt.c in Sources */,
 				FA57298F2A5437FF00FB1BAA /* cmssamp.c in Sources */,
 				FA57298B2A5437FF00FB1BAA /* cmstypes.c in Sources */,
@@ -521,6 +592,7 @@
 				FA5729D82A56E3C000FB1BAA /* ColorizeViewModel.swift in Sources */,
 				FA5728FF2A52EB6900FB1BAA /* Data+Append.swift in Sources */,
 				FA57299B2A5437FF00FB1BAA /* cmssm.c in Sources */,
+				FA572A002A59774600FB1BAA /* ColorizeUseCase.swift in Sources */,
 				FA5729EB2A58870400FB1BAA /* MainViewModel.swift in Sources */,
 				FA5729F52A59718B00FB1BAA /* AddNewItemCell.swift in Sources */,
 				FA5729F32A588B7800FB1BAA /* BindingConfigurableView.swift in Sources */,

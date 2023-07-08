@@ -22,16 +22,11 @@ class MainViewModel: MainViewModelProtocol {
 
     // MARK: - Private properties
 
-    private let imageColorizer: ImageColorizerProtocol
     private let downloadModelUseCase: DownloadModelUseCaseProtocol
 
     // MARK: - Initialization
 
-    init(
-        imageColorizer: ImageColorizerProtocol,
-        downloadModelUseCase: DownloadModelUseCaseProtocol
-    ) {
-        self.imageColorizer = imageColorizer
+    init(downloadModelUseCase: DownloadModelUseCaseProtocol) {
         self.downloadModelUseCase = downloadModelUseCase
     }
 

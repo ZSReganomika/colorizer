@@ -2,6 +2,7 @@ import UIKit
 
 enum ColorizeModels {
     enum State {
-        case imageColorized(UIImage)
+        case resultImage(UIImage)
+        case error(Error)
     }
 }
