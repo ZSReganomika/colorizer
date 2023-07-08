@@ -2,12 +2,11 @@ import Foundation
 import UIKit
 import Combine
 
-final class MainViewController: UIViewController {
+final class MainViewController: BaseViewController {
 
     // MARK: - Private properties
 
     private let viewModel: MainViewModelProtocol
-    private var cancellables: Set<AnyCancellable> = []
 
     // MARK: - GUI
 

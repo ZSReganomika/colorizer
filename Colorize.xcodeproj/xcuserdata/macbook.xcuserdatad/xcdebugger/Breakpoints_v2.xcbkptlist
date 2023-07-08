@@ -14,10 +14,10 @@
             filePath = "Colorize/Source/Features/Main/Presentation/MainViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "333"
-            endingLineNumber = "333"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            startingLineNumber = "332"
+            endingLineNumber = "332"
+            landmarkName = "EmptyHistoryLabel"
+            landmarkType = "13">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

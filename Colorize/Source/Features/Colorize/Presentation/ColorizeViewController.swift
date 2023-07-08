@@ -4,12 +4,11 @@ import Vision
 import CoreMedia
 import Combine
 
-final class ColorizeViewController: UIViewController {
+final class ColorizeViewController: BaseViewController {
 
     // MARK: - Private properties
 
     private let viewModel: ColorizeViewModelProtocol
-    private var cancellables: Set<AnyCancellable> = []
 
     // MARK: - GUI
 
