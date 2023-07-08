@@ -3,6 +3,7 @@ import Foundation
 
 protocol MainViewModelProtocol {
     var state: PassthroughSubject<MainModels.State, Never> { get }
+    var isNeedDownloadingModel: Bool { get }
 
     func downloadModel()
 }
@@ -12,6 +13,12 @@ class MainViewModel: MainViewModelProtocol {
     // MARK: - ColorizeViewModelProtocol properties
 
     var state = PassthroughSubject<MainModels.State, Never>()
+
+    var isNeedDownloadingModel: Bool {
+        UserDefaults.standard.string(
+            forKey: "ml_model_destination"
+        )?.isEmpty == true
+    }
 
     // MARK: - Private properties
 

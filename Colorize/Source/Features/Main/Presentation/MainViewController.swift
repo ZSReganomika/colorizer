@@ -34,10 +34,7 @@ final class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureView()
-
-        viewModel.downloadModel()
     }
 }
 
@@ -174,7 +171,7 @@ private extension MainViewController {
         downloadModelButton.layer.borderColor = UIColor.gray.cgColor
         downloadModelButton.layer.borderWidth = 2
         downloadModelButton.translatesAutoresizingMaskIntoConstraints = false
-
+        downloadModelButton.isHidden = !viewModel.isNeedDownloadingModel
         downloadModelButton.addTarget(
             self,
             action: #selector(downloadModelButtonAction),
@@ -188,7 +185,7 @@ private extension MainViewController {
         emptyHistoryView.layer.borderColor = UIColor.gray.cgColor
         emptyHistoryView.layer.borderWidth = 2
         emptyHistoryView.translatesAutoresizingMaskIntoConstraints = false
-        emptyHistoryView.isHidden = true
+        emptyHistoryView.isHidden = viewModel.isNeedDownloadingModel
 
         emptyHistoryLabel.text = "EMPTY HISTORY"
         emptyHistoryLabel.textColor = UIColor.gray
@@ -212,10 +209,14 @@ private extension MainViewController {
             HistoryItemCell.self,
             forCellWithReuseIdentifier: HistoryItemCell.reuseIdentifier
         )
+        collectionView.register(
+            AddNewItemCell.self,
+            forCellWithReuseIdentifier: AddNewItemCell.reuseIdentifier
+        )
 
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.isHidden = true
+        collectionView.isHidden = viewModel.isNeedDownloadingModel
         view.addSubview(collectionView)
     }
 
@@ -261,7 +262,7 @@ private extension MainViewController {
 
     @objc
     func downloadModelButtonAction() {
-
+        viewModel.downloadModel()
     }
 }
 
@@ -274,6 +275,15 @@ extension MainViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
+        if indexPath.row == 0 {
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: AddNewItemCell.reuseIdentifier,
+                for: indexPath
+            )
+            return cell
+        }
+
         let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: HistoryItemCell.reuseIdentifier,
             for: indexPath
@@ -287,7 +297,9 @@ extension MainViewController: UICollectionViewDataSource {
 extension MainViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
+        if indexPath.row == 0 {
+            
+        }
     }
 }
 

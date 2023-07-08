@@ -72,6 +72,7 @@
 		FA5729EF2A5889AC00FB1BAA /* MainModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5729EE2A5889AC00FB1BAA /* MainModels.swift */; };
 		FA5729F12A588A9F00FB1BAA /* MainFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5729F02A588A9F00FB1BAA /* MainFactory.swift */; };
 		FA5729F32A588B7800FB1BAA /* BindingConfigurableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5729F22A588B7800FB1BAA /* BindingConfigurableView.swift */; };
+		FA5729F52A59718B00FB1BAA /* AddNewItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5729F42A59718B00FB1BAA /* AddNewItemCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -138,6 +139,7 @@
 		FA5729EE2A5889AC00FB1BAA /* MainModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModels.swift; sourceTree = "<group>"; };
 		FA5729F02A588A9F00FB1BAA /* MainFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFactory.swift; sourceTree = "<group>"; };
 		FA5729F22A588B7800FB1BAA /* BindingConfigurableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingConfigurableView.swift; sourceTree = "<group>"; };
+		FA5729F42A59718B00FB1BAA /* AddNewItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewItemCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -370,6 +372,7 @@
 			isa = PBXGroup;
 			children = (
 				FA5729DF2A57051000FB1BAA /* HistoryItemCell.swift */,
+				FA5729F42A59718B00FB1BAA /* AddNewItemCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -519,6 +522,7 @@
 				FA5728FF2A52EB6900FB1BAA /* Data+Append.swift in Sources */,
 				FA57299B2A5437FF00FB1BAA /* cmssm.c in Sources */,
 				FA5729EB2A58870400FB1BAA /* MainViewModel.swift in Sources */,
+				FA5729F52A59718B00FB1BAA /* AddNewItemCell.swift in Sources */,
 				FA5729F32A588B7800FB1BAA /* BindingConfigurableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -49,7 +49,10 @@ class DownloadModelRepository: DownloadModelRepositoryProtocol {
                         permanentURL,
                         withItemAt: compiledModelURL
                     )
-                    UserDefaults.standard.set(permanentURL.lastPathComponent, forKey: "ml_model_destination")
+                    UserDefaults.standard.set(
+                        permanentURL.lastPathComponent,
+                        forKey: "ml_model_destination"
+                    )
                     let _ = try FileManager.default.removeItem(at: localURL)
                     resultHandler()
                 } catch {
