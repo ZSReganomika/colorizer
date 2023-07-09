@@ -4,6 +4,7 @@ import Foundation
 protocol MainViewModelProtocol {
     var state: PassthroughSubject<MainModels.State, Never> { get }
     var isNeedDownloadingModel: Bool { get }
+    var historyItems: [HistoryItem] { get }
 
     func downloadModel()
 }
@@ -19,6 +20,8 @@ class MainViewModel: MainViewModelProtocol {
             forKey: "ml_model_destination"
         )?.isEmpty == true
     }
+
+    var historyItems: [HistoryItem] = []
 
     // MARK: - Private properties
 

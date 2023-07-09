@@ -1,14 +1,16 @@
 import UIKit
 
-final class AddNewItemCell: UICollectionViewCell {
+final class AddNewItemCell: UICollectionViewCell,
+                            SelfConfiguringCell {
 
-    // MARK: - Properties
+    // MARK: - SelfConfiguringCell properties
 
     static let reuseIdentifier = "AddNewItemCell"
 
     // MARK: - GUI
 
-    private var addButton = UIButton()
+    private var iconImageView = UIImageView()
+    private var titleLabel = UILabel()
 
     // MARK: - Initialization
 
@@ -26,6 +28,12 @@ final class AddNewItemCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
     }
+
+    // MARK: - SelfConfiguringCell actions
+
+    func configure(with intValue: Int) {
+
+    }
 }
 
 // MARK: - LayoutConfigurableView
@@ -39,15 +47,18 @@ extension AddNewItemCell: LayoutConfigurableView {
 
         clipsToBounds = true
 
-        contentView.addSubview(addButton)
+        contentView.addSubview(iconImageView)
+        contentView.addSubview(titleLabel)
     }
 
     func configureSubviews() {
-        configureAddButton()
+        configureIconImageView()
+        configureTitleLabel()
     }
 
     func configureLayout() {
-        configureAddButtonLayout()
+        configureIconImageViewLayout()
+        configureTitleLabelLayout()
     }
 }
 
@@ -55,13 +66,18 @@ extension AddNewItemCell: LayoutConfigurableView {
 
 private extension AddNewItemCell {
 
-    func configureAddButton() {
-        addButton.setImage(
-            UIImage.init(systemName: "plus.rectangle.fill.on.folder.fill"),
-            for: .normal
-        )
-        addButton.tintColor = UIColor.gray
-        addButton.translatesAutoresizingMaskIntoConstraints = false
+    func configureIconImageView() {
+        iconImageView.image = UIImage(systemName: Constants.IconImageView.imageName)
+        iconImageView.tintColor = UIColor.gray
+        iconImageView.contentMode = .scaleAspectFit
+        iconImageView.translatesAutoresizingMaskIntoConstraints = false
+    }
+
+    func configureTitleLabel() {
+        titleLabel.text = Constants.TitleLabel.title
+        titleLabel.textColor = UIColor.gray
+        titleLabel.textAlignment = .left
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
     }
 }
 
@@ -69,23 +85,40 @@ private extension AddNewItemCell {
 
 private extension AddNewItemCell {
 
-    func configureAddButtonLayout() {
+    func configureIconImageViewLayout() {
         NSLayoutConstraint.activate([
-            addButton.bottomAnchor.constraint(
+            iconImageView.bottomAnchor.constraint(
                 equalTo: contentView.bottomAnchor,
-                constant: Constants.AddButton.bottom
+                constant: Constants.IconImageView.bottom
             ),
-            addButton.leadingAnchor.constraint(
+            iconImageView.leadingAnchor.constraint(
                 equalTo: contentView.leadingAnchor,
-                constant: Constants.AddButton.leading
+                constant: Constants.IconImageView.leading
             ),
-            addButton.trailingAnchor.constraint(
-                equalTo: contentView.trailingAnchor,
-                constant: Constants.AddButton.trailing
-            ),
-            addButton.topAnchor.constraint(
+            iconImageView.topAnchor.constraint(
                 equalTo: contentView.topAnchor,
-                constant: Constants.AddButton.top
+                constant: Constants.IconImageView.top
+            ),
+            iconImageView.widthAnchor.constraint(
+                equalTo: iconImageView.heightAnchor,
+                multiplier: 1
+            )
+        ])
+    }
+
+    func configureTitleLabelLayout() {
+        NSLayoutConstraint.activate([
+            titleLabel.bottomAnchor.constraint(
+                equalTo: contentView.bottomAnchor,
+                constant: Constants.TitleLabel.bottom
+            ),
+            titleLabel.leadingAnchor.constraint(
+                equalTo: iconImageView.trailingAnchor,
+                constant: Constants.TitleLabel.leading
+            ),
+            titleLabel.topAnchor.constraint(
+                equalTo: contentView.topAnchor,
+                constant: Constants.TitleLabel.top
             )
         ])
     }
@@ -95,10 +128,17 @@ private extension AddNewItemCell {
 
 private enum Constants {
 
-    enum AddButton {
+    enum IconImageView {
+        static let imageName: String = "plus.rectangle.fill.on.folder.fill"
         static let bottom: CGFloat = -10
         static let leading: CGFloat = 10.0
-        static let trailing: CGFloat = -10.0
+        static let top: CGFloat = 10
+    }
+
+    enum TitleLabel {
+        static let title: String = "COLORIZE PHOTO"
+        static let bottom: CGFloat = -10
+        static let leading: CGFloat = 10.0
         static let top: CGFloat = 10
     }
 }

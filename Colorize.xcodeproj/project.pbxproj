@@ -78,6 +78,9 @@
 		FA572A002A59774600FB1BAA /* ColorizeUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5729FF2A59774600FB1BAA /* ColorizeUseCase.swift */; };
 		FA572A042A5977AF00FB1BAA /* ColorizeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A032A5977AF00FB1BAA /* ColorizeRepository.swift */; };
 		FA572A072A597BE100FB1BAA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A062A597BE100FB1BAA /* BaseViewController.swift */; };
+		FA572A092A5ADAFB00FB1BAA /* SelfConfiguringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A082A5ADAFB00FB1BAA /* SelfConfiguringCell.swift */; };
+		FA572A0B2A5AE52F00FB1BAA /* HistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A0A2A5AE52F00FB1BAA /* HistoryItem.swift */; };
+		FA572A0D2A5AEC7600FB1BAA /* UICollectionView+Configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A0C2A5AEC7600FB1BAA /* UICollectionView+Configure.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -150,6 +153,9 @@
 		FA5729FF2A59774600FB1BAA /* ColorizeUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorizeUseCase.swift; sourceTree = "<group>"; };
 		FA572A032A5977AF00FB1BAA /* ColorizeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorizeRepository.swift; sourceTree = "<group>"; };
 		FA572A062A597BE100FB1BAA /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		FA572A082A5ADAFB00FB1BAA /* SelfConfiguringCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfConfiguringCell.swift; sourceTree = "<group>"; };
+		FA572A0A2A5AE52F00FB1BAA /* HistoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryItem.swift; sourceTree = "<group>"; };
+		FA572A0C2A5AEC7600FB1BAA /* UICollectionView+Configure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Configure.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,6 +282,7 @@
 				FA5728FE2A52EB6900FB1BAA /* Data+Append.swift */,
 				FA5729532A532FD200FB1BAA /* UIImage+Scaled.swift */,
 				FA57295A2A53FD1200FB1BAA /* DispatchQueue+Background.swift */,
+				FA572A0C2A5AEC7600FB1BAA /* UICollectionView+Configure.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -397,6 +404,7 @@
 			isa = PBXGroup;
 			children = (
 				FA5729E82A58863600FB1BAA /* ProgressModel.swift */,
+				FA572A0A2A5AE52F00FB1BAA /* HistoryItem.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -460,6 +468,7 @@
 			isa = PBXGroup;
 			children = (
 				FA572A062A597BE100FB1BAA /* BaseViewController.swift */,
+				FA572A082A5ADAFB00FB1BAA /* SelfConfiguringCell.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -558,6 +567,7 @@
 				FA5729A12A5437FF00FB1BAA /* cmsgmt.c in Sources */,
 				FA57298C2A5437FF00FB1BAA /* cmscgats.c in Sources */,
 				FA5729A72A5437FF00FB1BAA /* cmsintrp.c in Sources */,
+				FA572A0D2A5AEC7600FB1BAA /* UICollectionView+Configure.swift in Sources */,
 				FA57298E2A5437FF00FB1BAA /* cmsopt.c in Sources */,
 				FA572A072A597BE100FB1BAA /* BaseViewController.swift in Sources */,
 				FA57299C2A5437FF00FB1BAA /* cmsxform.c in Sources */,
@@ -591,6 +601,7 @@
 				FA57298B2A5437FF00FB1BAA /* cmstypes.c in Sources */,
 				FA5729592A53FCE500FB1BAA /* ImageColorizer.swift in Sources */,
 				FA5729E62A58848100FB1BAA /* DownloadModelRepository.swift in Sources */,
+				FA572A0B2A5AE52F00FB1BAA /* HistoryItem.swift in Sources */,
 				FA57299E2A5437FF00FB1BAA /* cmsvirt.c in Sources */,
 				FA5729DB2A56EB6800FB1BAA /* ColorizeModel.swift in Sources */,
 				FA5729A82A5437FF00FB1BAA /* cmshalf.c in Sources */,
@@ -601,6 +612,7 @@
 				FA5729952A5437FF00FB1BAA /* cmsnamed.c in Sources */,
 				FA5729E42A58840C00FB1BAA /* DownloadModelRepositoryProtocol.swift in Sources */,
 				FA5729ED2A58886100FB1BAA /* ColorizeModels.swift in Sources */,
+				FA572A092A5ADAFB00FB1BAA /* SelfConfiguringCell.swift in Sources */,
 				FA5729D82A56E3C000FB1BAA /* ColorizeViewModel.swift in Sources */,
 				FA5728FF2A52EB6900FB1BAA /* Data+Append.swift in Sources */,
 				FA57299B2A5437FF00FB1BAA /* cmssm.c in Sources */,

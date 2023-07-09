@@ -40,7 +40,7 @@ final class ColorizeViewController: BaseViewController {
 extension ColorizeViewController: LayoutConfigurableView {
 
     func configureViewProperties() {
-        title = "Colorize"
+        title = Constants.title
 
         view.backgroundColor = .white
         view.addSubview(postPhotoButton)
@@ -145,8 +145,14 @@ private extension ColorizeViewController {
     }
 
     func configurePostPhotoButton() {
-        postPhotoButton.setTitle("POST IMAGE", for: .normal)
-        postPhotoButton.setTitleColor(.gray, for: .normal)
+        postPhotoButton.setTitle(
+            Constants.PostPhotoButton.title,
+            for: .normal
+        )
+        postPhotoButton.setTitleColor(
+            .gray,
+            for: .normal
+        )
         postPhotoButton.layer.cornerRadius = 5
         postPhotoButton.clipsToBounds = true
         postPhotoButton.layer.borderColor = UIColor.gray.cgColor
@@ -192,7 +198,11 @@ private extension ColorizeViewController {
 // MARK: - Constants
 
 private enum Constants {
+
+    static let title: String = "Colorize"
+
     enum PostPhotoButton {
+        static let title: String = "POST IMAGE"
         static let bottom: CGFloat = -100
         static let leading: CGFloat = 50.0
         static let trailing: CGFloat = -50.0
