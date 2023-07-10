@@ -21,7 +21,10 @@ final class MainViewController: BaseViewController {
 
     init(viewModel: MainViewModelProtocol) {
         self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
+        super.init(
+            nibName: nil,
+            bundle: nil
+        )
     }
 
     required init?(coder: NSCoder) {
@@ -47,6 +50,21 @@ extension MainViewController: LayoutConfigurableView {
 
         view.addSubview(emptyHistoryView)
         view.addSubview(downloadModelButton)
+
+        let image = UIImage(systemName: "gear")?.withRenderingMode(.alwaysOriginal)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            image: image,
+            style: .plain,
+            target: self,
+            action: #selector(openSettings)
+        )
+
+        navigationItem.backBarButtonItem = UIBarButtonItem(
+            title: "",
+            style: .plain,
+            target: nil,
+            action: nil
+        )
     }
 
     func configureSubviews() {
@@ -85,6 +103,14 @@ extension MainViewController: BindingConfigurableView {
                 }
             }.store(in: &cancellables)
     }
+
+    func bindOutput() {
+        downloadModelButton.addTarget(
+            self,
+            action: #selector(downloadModelButtonAction),
+            for: .touchUpInside
+        )
+    }
 }
 
 // MARK: - Configure
@@ -96,6 +122,10 @@ private extension MainViewController {
             Constants.DownloadModelButton.title,
             for: .normal
         )
+        downloadModelButton.titleLabel?.font = UIFont.systemFont(
+            ofSize: Constants.DownloadModelButton.fontSize,
+            weight: .medium
+        )
         downloadModelButton.setTitleColor(
             .gray,
             for: .normal
@@ -106,11 +136,6 @@ private extension MainViewController {
         downloadModelButton.layer.borderWidth = 2
         downloadModelButton.translatesAutoresizingMaskIntoConstraints = false
         downloadModelButton.isHidden = !viewModel.isNeedDownloadingModel
-        downloadModelButton.addTarget(
-            self,
-            action: #selector(downloadModelButtonAction),
-            for: .touchUpInside
-        )
     }
 
     func configureEmptyHistoryView() {
@@ -122,6 +147,10 @@ private extension MainViewController {
         emptyHistoryView.isHidden = viewModel.isNeedDownloadingModel
 
         emptyHistoryLabel.text = Constants.EmptyHistoryLabel.title
+        emptyHistoryLabel.font = UIFont.systemFont(
+            ofSize: Constants.EmptyHistoryLabel.fontSize,
+            weight: .medium
+        )
         emptyHistoryLabel.textColor = UIColor.gray
         emptyHistoryLabel.textAlignment = .center
         emptyHistoryLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -147,13 +176,126 @@ private extension MainViewController {
             AddNewItemCell.self,
             forCellWithReuseIdentifier: AddNewItemCell.reuseIdentifier
         )
-
+        collectionView.bounces = false
         collectionView.isHidden = viewModel.isNeedDownloadingModel
         collectionView.delegate = self
 
         view.addSubview(collectionView)
 
         setupDataSource()
+    }
+}
+
+// MARK: - DataSource
+
+private extension MainViewController {
+
+    func setupDataSource() {
+        dataSource = UICollectionViewDiffableDataSource<Constants.Section, Constants.DataItem>(
+            collectionView: collectionView,
+            cellProvider: { collectionView, indexPath, dataItem in
+                switch dataItem {
+                case .addItem:
+                    return collectionView.configure(
+                        cellType: AddNewItemCell.self,
+                        for: indexPath
+                    )
+                case .historyItem:
+                    return collectionView.configure(
+                        cellType: HistoryItemCell.self,
+                        for: indexPath
+                    )
+                }
+        })
+
+        dataSource.apply(
+            snapshotForCurrentState(),
+            animatingDifferences: false
+        )
+    }
+
+    func snapshotForCurrentState() -> NSDiffableDataSourceSnapshot<Constants.Section, Constants.DataItem>{
+        var snapshot = NSDiffableDataSourceSnapshot<Constants.Section, Constants.DataItem>()
+        snapshot.appendSections(Constants.Section.allCases)
+        snapshot.appendItems(
+            [.addItem],
+            toSection: Constants.Section.addItem
+        )
+        snapshot.appendItems(
+            viewModel.historyItems.map { Constants.DataItem.historyItem($0) },
+            toSection: Constants.Section.historyItems
+        )
+        return snapshot
+    }
+}
+
+// MARK: - Constraints
+
+private extension MainViewController {
+
+    func configureCollectionViewLayout() {
+        NSLayoutConstraint.activate([
+            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
+
+    func configureEmptyHistoryViewLayout() {
+        NSLayoutConstraint.activate([
+            emptyHistoryView.trailingAnchor.constraint(
+                equalTo: view.trailingAnchor,
+                constant: Constants.EmptyHistoryView.trailing
+            ),
+            emptyHistoryView.leadingAnchor.constraint(
+                equalTo: view.leadingAnchor,
+                constant: Constants.EmptyHistoryView.leading
+            ),
+            emptyHistoryView.heightAnchor.constraint(equalToConstant: Constants.EmptyHistoryView.height),
+            emptyHistoryView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+    }
+
+    func configureEmptyHistoryLabel() {
+        NSLayoutConstraint.activate([
+            emptyHistoryLabel.trailingAnchor.constraint(
+                equalTo: emptyHistoryView.trailingAnchor,
+                constant: Constants.EmptyHistoryLabel.trailing
+            ),
+            emptyHistoryLabel.leadingAnchor.constraint(
+                equalTo: emptyHistoryView.leadingAnchor,
+                constant: Constants.EmptyHistoryLabel.leading
+            ),
+            emptyHistoryLabel.topAnchor.constraint(
+                equalTo: emptyHistoryView.topAnchor,
+                constant: Constants.EmptyHistoryLabel.top
+            ),
+            emptyHistoryLabel.bottomAnchor.constraint(
+                equalTo: emptyHistoryView.bottomAnchor,
+                constant: Constants.EmptyHistoryLabel.bottom
+            )
+        ])
+    }
+
+    func configureDownloadModelLayout() {
+        NSLayoutConstraint.activate([
+            downloadModelButton.bottomAnchor.constraint(
+                equalTo: view.bottomAnchor,
+                constant: Constants.DownloadModelButton.bottom
+            ),
+            downloadModelButton.leadingAnchor.constraint(
+                equalTo: view.leadingAnchor,
+                constant: Constants.DownloadModelButton.leading
+            ),
+            downloadModelButton.trailingAnchor.constraint(
+                equalTo: view.trailingAnchor,
+                constant: Constants.DownloadModelButton.trailing
+            ),
+            downloadModelButton.heightAnchor.constraint(
+                equalToConstant: Constants.DownloadModelButton.height
+            )
+        ])
     }
 
     func createLayout() -> UICollectionViewLayout {
@@ -225,119 +367,6 @@ private extension MainViewController {
     }
 }
 
-// MARK: - DataSource
-
-private extension MainViewController {
-
-    func setupDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Constants.Section, Constants.DataItem>(
-            collectionView: collectionView,
-            cellProvider: { collectionView, indexPath, dataItem in
-                switch dataItem {
-                case .addItem:
-                    return collectionView.configure(
-                        cellType: AddNewItemCell.self,
-                        for: indexPath
-                    )
-                case .historyItem:
-                    return collectionView.configure(
-                        cellType: HistoryItemCell.self,
-                        for: indexPath
-                    )
-                }
-        })
-
-        dataSource.apply(
-            snapshotForCurrentState(),
-            animatingDifferences: false
-        )
-    }
-
-    func snapshotForCurrentState() -> NSDiffableDataSourceSnapshot<Constants.Section, Constants.DataItem>{
-        var snapshot = NSDiffableDataSourceSnapshot<Constants.Section, Constants.DataItem>()
-        snapshot.appendSections(Constants.Section.allCases)
-        snapshot.appendItems(
-            [.addItem],
-            toSection: Constants.Section.addItem
-        )
-        snapshot.appendItems(
-            viewModel.historyItems.map { Constants.DataItem.historyItem($0) },
-            toSection: Constants.Section.historyItems
-        )
-        return snapshot
-    }
-}
-
-// MARK: - Constraints
-
-private extension MainViewController {
-
-    func configureCollectionViewLayout() {
-        NSLayoutConstraint.activate([
-            collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
-    }
-
-    func configureEmptyHistoryViewLayout() {
-        NSLayoutConstraint.activate([
-            emptyHistoryView.trailingAnchor.constraint(
-                equalTo: view.trailingAnchor,
-                constant: Constants.EmptyHistoryView.trailing
-            ),
-            emptyHistoryView.leadingAnchor.constraint(
-                equalTo: view.leadingAnchor,
-                constant: Constants.EmptyHistoryView.leading
-            ),
-            emptyHistoryView.heightAnchor.constraint(equalToConstant: Constants.EmptyHistoryView.height),
-            emptyHistoryView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ])
-    }
-
-    func configureEmptyHistoryLabel() {
-        NSLayoutConstraint.activate([
-            emptyHistoryLabel.trailingAnchor.constraint(
-                equalTo: emptyHistoryView.trailingAnchor,
-                constant: Constants.EmptyHistoryLabel.trailing
-            ),
-            emptyHistoryLabel.leadingAnchor.constraint(
-                equalTo: emptyHistoryView.leadingAnchor,
-                constant: Constants.EmptyHistoryLabel.leading
-            ),
-            emptyHistoryLabel.topAnchor.constraint(
-                equalTo: emptyHistoryView.topAnchor,
-                constant: Constants.EmptyHistoryLabel.top
-            ),
-            emptyHistoryLabel.bottomAnchor.constraint(
-                equalTo: emptyHistoryView.bottomAnchor,
-                constant: Constants.EmptyHistoryLabel.bottom
-            )
-        ])
-    }
-
-    func configureDownloadModelLayout() {
-        NSLayoutConstraint.activate([
-            downloadModelButton.bottomAnchor.constraint(
-                equalTo: view.bottomAnchor,
-                constant: Constants.DownloadModelButton.bottom
-            ),
-            downloadModelButton.leadingAnchor.constraint(
-                equalTo: view.leadingAnchor,
-                constant: Constants.DownloadModelButton.leading
-            ),
-            downloadModelButton.trailingAnchor.constraint(
-                equalTo: view.trailingAnchor,
-                constant: Constants.DownloadModelButton.trailing
-            ),
-            downloadModelButton.heightAnchor.constraint(
-                equalToConstant: Constants.DownloadModelButton.height
-            )
-        ])
-    }
-}
-
 // MARK: - Private actions
 
 private extension MainViewController {
@@ -345,6 +374,11 @@ private extension MainViewController {
     @objc
     func downloadModelButtonAction() {
         viewModel.downloadModel()
+    }
+
+    @objc
+    func openSettings() {
+
     }
 }
 
@@ -374,6 +408,7 @@ private enum Constants {
 
     enum DownloadModelButton {
         static let title: String = "DOWNLOAD MODEL"
+        static let fontSize: CGFloat = 16.0
         static let bottom: CGFloat = -100
         static let leading: CGFloat = 50.0
         static let trailing: CGFloat = -50.0
@@ -388,6 +423,7 @@ private enum Constants {
 
     enum EmptyHistoryLabel {
         static let title: String = "EMPTY HISTORY"
+        static let fontSize: CGFloat = 16.0
         static let bottom: CGFloat = -10
         static let top: CGFloat = 10
         static let leading: CGFloat = 10

@@ -76,6 +76,10 @@ private extension AddNewItemCell {
     func configureTitleLabel() {
         titleLabel.text = Constants.TitleLabel.title
         titleLabel.textColor = UIColor.gray
+        titleLabel.font = UIFont.systemFont(
+            ofSize: Constants.TitleLabel.fontSize,
+            weight: .medium
+        )
         titleLabel.textAlignment = .left
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -137,6 +141,7 @@ private enum Constants {
 
     enum TitleLabel {
         static let title: String = "COLORIZE PHOTO"
+        static let fontSize: CGFloat = 16.0
         static let bottom: CGFloat = -10
         static let leading: CGFloat = 10.0
         static let top: CGFloat = 10

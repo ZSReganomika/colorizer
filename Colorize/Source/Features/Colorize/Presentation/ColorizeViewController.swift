@@ -12,15 +12,22 @@ final class ColorizeViewController: BaseViewController {
 
     // MARK: - GUI
 
-    private var postPhotoButton = UIButton()
+    private var colorizeButton = UIButton()
     private var imagePicker = UIImagePickerController()
     private var imageView = UIImageView()
+    private var addButton = UIBarButtonItem()
+    private var deleteButton = UIBarButtonItem()
+
+    private var imageViewHeightConstraint: NSLayoutConstraint?
 
     // MARK: - Initialization
 
     init(viewModel: ColorizeViewModelProtocol) {
         self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
+        super.init(
+            nibName: nil,
+            bundle: nil
+        )
     }
 
     required init?(coder: NSCoder) {
@@ -31,7 +38,10 @@ final class ColorizeViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         configureView()
+
+        viewModel.prepareForDisplay()
     }
 }
 
@@ -43,14 +53,16 @@ extension ColorizeViewController: LayoutConfigurableView {
         title = Constants.title
 
         view.backgroundColor = .white
-        view.addSubview(postPhotoButton)
+        view.addSubview(colorizeButton)
         view.addSubview(imageView)
     }
 
     func configureSubviews() {
-        configurePostPhotoButton()
+        configureColorizeButton()
         configureImageView()
         configureImagePicker()
+        configureAddButton()
+        configureDeleteButton()
     }
 
     func configureLayout() {
@@ -68,14 +80,66 @@ extension ColorizeViewController: BindingConfigurableView {
             .state
             .sink { state in
                 switch state {
+                case .initial:
+                    self.setInitialState()
                 case let .resultImage(image):
-                    DispatchQueue.main.async {
-                        self.imageView.image = image
-                    }
+                    self.setResultImageState(image: image)
                 case let .error(error):
-                    print(error)
+                    self.setErrorState(error: error)
+                case let .imageAdded(image):
+                    self.setImageAddedState(image: image)
+                case .imageRemoved:
+                    self.setImageRemovedState()
                 }
             }.store(in: &cancellables)
+    }
+
+    func bindOutput() {
+        colorizeButton.addTarget(
+            self,
+            action: #selector(colorize),
+            for: .touchUpInside
+        )
+    }
+}
+
+// MARK: - State
+
+private extension ColorizeViewController {
+
+    func setInitialState() {
+        navigationItem.rightBarButtonItem = self.addButton
+    }
+
+    func setErrorState(error: Error) {
+        print(error)
+    }
+
+    func setResultImageState(image: UIImage) {
+        DispatchQueue.main.async {
+            self.colorizeButton.isHidden = true
+            self.imageView.image = image
+        }
+    }
+
+    func setImageRemovedState() {
+        navigationItem.rightBarButtonItem = self.addButton
+        DispatchQueue.main.async {
+            self.imageView.isHidden = true
+            self.colorizeButton.isHidden = true
+            self.imageView.image = nil
+            self.imageViewHeightConstraint?.constant = 0
+        }
+    }
+
+    func setImageAddedState(image: UIImage) {
+        navigationItem.rightBarButtonItem = self.deleteButton
+        DispatchQueue.main.async {
+            self.imageView.isHidden = false
+            self.colorizeButton.isHidden = false
+            self.imageView.image = image
+            self.imageViewHeightConstraint?.constant = self.getResizedImageHeight(image: image)
+        }
     }
 }
 
@@ -83,22 +147,28 @@ extension ColorizeViewController: BindingConfigurableView {
 
 private extension ColorizeViewController {
 
+    func getResizedImageHeight(image: UIImage) -> CGFloat {
+        let scale = image.size.height / image.size.width
+        let width = UIScreen.main.bounds.width
+        return (width - (Constants.ImageView.sideInset * 2)) * scale
+    }
+
     func configurePostPhotoButtonLayout() {
         NSLayoutConstraint.activate([
-            postPhotoButton.bottomAnchor.constraint(
+            colorizeButton.bottomAnchor.constraint(
                 equalTo: view.bottomAnchor,
-                constant: Constants.PostPhotoButton.bottom
+                constant: Constants.ColorizeButton.bottom
             ),
-            postPhotoButton.leadingAnchor.constraint(
+            colorizeButton.leadingAnchor.constraint(
                 equalTo: view.leadingAnchor,
-                constant: Constants.PostPhotoButton.leading
+                constant: Constants.ColorizeButton.leading
             ),
-            postPhotoButton.trailingAnchor.constraint(
+            colorizeButton.trailingAnchor.constraint(
                 equalTo: view.trailingAnchor,
-                constant: Constants.PostPhotoButton.trailing
+                constant: Constants.ColorizeButton.trailing
             ),
-            postPhotoButton.heightAnchor.constraint(
-                equalToConstant: Constants.PostPhotoButton.height
+            colorizeButton.heightAnchor.constraint(
+                equalToConstant: Constants.ColorizeButton.height
             )
         ])
     }
@@ -109,19 +179,36 @@ private extension ColorizeViewController {
                 equalTo: view.safeAreaLayoutGuide.topAnchor,
                 constant: Constants.ImageView.top
             ),
-            imageView.bottomAnchor.constraint(
-                equalTo: postPhotoButton.topAnchor,
-                constant: Constants.ImageView.bottom
-            ),
             imageView.leadingAnchor.constraint(
                 equalTo: view.leadingAnchor,
-                constant: Constants.ImageView.leading
+                constant: Constants.ImageView.sideInset
             ),
             imageView.trailingAnchor.constraint(
                 equalTo: view.trailingAnchor,
-                constant: Constants.ImageView.trailing
+                constant: -Constants.ImageView.sideInset
             )
         ])
+
+        imageViewHeightConstraint = imageView.heightAnchor.constraint(
+            equalToConstant: 0
+        )
+        imageViewHeightConstraint?.isActive = true
+    }
+
+    func configureAddButton() {
+        addButton = UIBarButtonItem(
+            barButtonSystemItem: .add,
+            target: self,
+            action: #selector(addPhoto)
+        )
+    }
+
+    func configureDeleteButton() {
+        deleteButton = UIBarButtonItem(
+            barButtonSystemItem: .trash,
+            target: self,
+            action: #selector(removePhoto)
+        )
     }
 }
 
@@ -130,6 +217,7 @@ private extension ColorizeViewController {
 private extension ColorizeViewController {
 
     func configureImageView() {
+        imageView.isHidden = true
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 5
@@ -144,26 +232,25 @@ private extension ColorizeViewController {
         imagePicker.allowsEditing = false
     }
 
-    func configurePostPhotoButton() {
-        postPhotoButton.setTitle(
-            Constants.PostPhotoButton.title,
+    func configureColorizeButton() {
+        colorizeButton.setTitle(
+            Constants.ColorizeButton.title,
             for: .normal
         )
-        postPhotoButton.setTitleColor(
+        colorizeButton.titleLabel?.font = UIFont.systemFont(
+            ofSize: Constants.ColorizeButton.fontSize,
+            weight: .medium
+        )
+        colorizeButton.setTitleColor(
             .gray,
             for: .normal
         )
-        postPhotoButton.layer.cornerRadius = 5
-        postPhotoButton.clipsToBounds = true
-        postPhotoButton.layer.borderColor = UIColor.gray.cgColor
-        postPhotoButton.layer.borderWidth = 2
-        postPhotoButton.translatesAutoresizingMaskIntoConstraints = false
-
-        postPhotoButton.addTarget(
-            self,
-            action: #selector(postPhotoButtonAction),
-            for: .touchUpInside
-        )
+        colorizeButton.isHidden = true
+        colorizeButton.layer.cornerRadius = 5
+        colorizeButton.clipsToBounds = true
+        colorizeButton.layer.borderColor = UIColor.gray.cgColor
+        colorizeButton.layer.borderWidth = 2
+        colorizeButton.translatesAutoresizingMaskIntoConstraints = false
     }
 }
 
@@ -175,7 +262,7 @@ extension ColorizeViewController: UIImagePickerControllerDelegate & UINavigation
     ) {
         guard let image = info[.originalImage] as? UIImage else { return }
 
-        colorize(inputImage: image)
+        viewModel.setImage(image: image)
 
         picker.dismiss(animated: true)
     }
@@ -186,12 +273,18 @@ extension ColorizeViewController: UIImagePickerControllerDelegate & UINavigation
 private extension ColorizeViewController {
 
     @objc
-    func postPhotoButtonAction() {
+    func addPhoto() {
         present(imagePicker, animated: true)
     }
 
-    func colorize(inputImage: UIImage) {
-        viewModel.colorize(inputImage: inputImage)
+    @objc
+    func removePhoto() {
+        viewModel.removeImage()
+    }
+
+    @objc
+    func colorize() {
+        viewModel.colorize()
     }
 }
 
@@ -201,18 +294,18 @@ private enum Constants {
 
     static let title: String = "Colorize"
 
-    enum PostPhotoButton {
-        static let title: String = "POST IMAGE"
-        static let bottom: CGFloat = -100
-        static let leading: CGFloat = 50.0
-        static let trailing: CGFloat = -50.0
-        static let height: CGFloat = 100.0
+    enum ColorizeButton {
+        static let title: String = "COLORIZE"
+        static let fontSize: CGFloat = 16.0
+        static let bottom: CGFloat = -50
+        static let leading: CGFloat = 20.0
+        static let trailing: CGFloat = -20.0
+        static let height: CGFloat = 50.0
     }
 
     enum ImageView {
         static let bottom: CGFloat = -20.0
-        static let leading: CGFloat = 50.0
-        static let trailing: CGFloat = -50.0
+        static let sideInset: CGFloat = 20.0
         static let top: CGFloat = 20.0
     }
 }

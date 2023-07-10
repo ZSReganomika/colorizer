@@ -12,6 +12,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         FirebaseApp.configure()
 
+        configureAppearance()
+
         self.window = UIWindow(frame: UIScreen.main.bounds)
 
         let viewController = MainFactory().getMainController()
@@ -22,6 +24,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         self.window?.makeKeyAndVisible()
         return true
+    }
+
+    func configureAppearance() {
+        UINavigationBar.appearance().backgroundColor = .clear
+        UINavigationBar.appearance().barTintColor = .gray
+        UIBarButtonItem.appearance().tintColor = .gray
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.gray]
+        UITabBar.appearance().barTintColor = .gray
     }
 }
 

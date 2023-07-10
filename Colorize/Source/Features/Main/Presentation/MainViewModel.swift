@@ -2,7 +2,7 @@ import Combine
 import Foundation
 
 protocol MainViewModelProtocol {
-    var state: PassthroughSubject<MainModels.State, Never> { get }
+    var state: AnyPublisher<MainModels.State, Never> { get }
     var isNeedDownloadingModel: Bool { get }
     var historyItems: [HistoryItem] { get }
 
@@ -13,7 +13,9 @@ class MainViewModel: MainViewModelProtocol {
 
     // MARK: - ColorizeViewModelProtocol properties
 
-    var state = PassthroughSubject<MainModels.State, Never>()
+    var state: AnyPublisher<MainModels.State, Never> {
+        stateSubject.eraseToAnyPublisher()
+    }
 
     var isNeedDownloadingModel: Bool {
         UserDefaults.standard.string(
@@ -27,6 +29,8 @@ class MainViewModel: MainViewModelProtocol {
 
     private let downloadModelUseCase: DownloadModelUseCaseProtocol
 
+    private var stateSubject = PassthroughSubject<MainModels.State, Never>()
+
     // MARK: - Initialization
 
     init(downloadModelUseCase: DownloadModelUseCaseProtocol) {
@@ -37,11 +41,11 @@ class MainViewModel: MainViewModelProtocol {
 
     func downloadModel() {
         downloadModelUseCase.getModel { [weak self] progress in
-            self?.state.send(.progress(progress))
+            self?.stateSubject.send(.progress(progress))
         } resultHandler: { [weak self]  in
-            self?.state.send(.modelDownloaded)
+            self?.stateSubject.send(.modelDownloaded)
         } errorHandler: { [weak self] error in
-            self?.state.send(.error(error))
+            self?.stateSubject.send(.error(error))
         }
     }
 }
