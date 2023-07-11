@@ -28,12 +28,6 @@ final class AddNewItemCell: UICollectionViewCell,
     override func layoutSubviews() {
         super.layoutSubviews()
     }
-
-    // MARK: - SelfConfiguringCell actions
-
-    func configure(with intValue: Int) {
-
-    }
 }
 
 // MARK: - LayoutConfigurableView

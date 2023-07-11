@@ -7,9 +7,13 @@ protocol MainFactoryProtocol {
 final class MainFactory: MainFactoryProtocol {
 
     func getMainController() -> UIViewController {
-        let repository = DownloadModelRepository()
-        let useCase = DownloadModelUseCase(repository: repository)
-        let viewModel = MainViewModel(downloadModelUseCase: useCase)
+        let repository = DownloadModelRepository(coreDataManager: CoreDataManager())
+        let downloadModelUseCase = DownloadModelUseCase(repository: repository)
+        let getHistoryItemsUseCase = GetHistoryItemsUseCase(repository: repository)
+        let viewModel = MainViewModel(
+            downloadModelUseCase: downloadModelUseCase,
+            getHistoryItemsUseCase: getHistoryItemsUseCase
+        )
         let viewController = MainViewController(viewModel: viewModel)
         return viewController
     }

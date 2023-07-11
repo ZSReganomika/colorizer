@@ -4,4 +4,6 @@ protocol ColorizeRepositoryProtocol {
         resultHandler: @escaping (UIImage) -> Void,
         errorHandler: @escaping (Error) -> Void
     )
+
+    func saveHistoryItem(item: HistoryItem)
 }

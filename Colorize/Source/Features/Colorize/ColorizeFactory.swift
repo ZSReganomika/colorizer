@@ -1,13 +1,20 @@
 protocol ColorizeFactoryProtocol {
-    func getColorizeController() -> UIViewController
+    func getColorizeController() -> ColorizeViewController
 }
 
 final class ColorizeFactory {
 
-    func getColorizeController() -> UIViewController {
-        let repository = ColorizeRepository(colorizer: ImageColorizer())
-        let useCase = ColorizeUseCase(repository: repository)
-        let viewModel = ColorizeViewModel(colorizeUseCase: useCase)
+    func getColorizeController() -> ColorizeViewController {
+        let repository = ColorizeRepository(
+            colorizer: ImageColorizer(),
+            coreDataManager: CoreDataManager()
+        )
+        let colorizeUseCase = ColorizeUseCase(repository: repository)
+        let saveHistoryItemUseCase = SaveHistoryItemUseCase(repository: repository)
+        let viewModel = ColorizeViewModel(
+            colorizeUseCase: colorizeUseCase,
+            saveHistoryItemUseCase: saveHistoryItemUseCase
+        )
         let viewController = ColorizeViewController(viewModel: viewModel)
         return viewController
     }

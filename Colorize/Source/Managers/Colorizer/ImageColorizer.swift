@@ -147,7 +147,6 @@ extension ImageColorizer {
         return LAB(l: inputImageLab.l, a: a, b: b)
     }
 
-    // Pre-process input: resize
     private func preProcess(inputImage: UIImage) throws -> LAB {
         guard let lab = inputImage.resizedImage(with: Constants.inputSize)?.toLab() else {
             throw ColorizerError.preprocessFailure

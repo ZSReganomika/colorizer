@@ -3,11 +3,16 @@ final class ColorizeRepository: ColorizeRepositoryProtocol {
     // MARK: - Private properties
 
     private var colorizer: ImageColorizerProtocol
+    private let coreDataManager: CoreDataManagerProtocol
 
     // MARK: - Initialization
 
-    init(colorizer: ImageColorizerProtocol) {
+    init(
+        colorizer: ImageColorizerProtocol,
+        coreDataManager: CoreDataManagerProtocol
+    ) {
         self.colorizer = colorizer
+        self.coreDataManager = coreDataManager
     }
 
     // MARK: - ColorizeRepositoryProtocol
@@ -25,5 +30,9 @@ final class ColorizeRepository: ColorizeRepositoryProtocol {
                 errorHandler(error)
             }
         }
+    }
+
+    func saveHistoryItem(item: HistoryItem) {
+        coreDataManager.saveHistoryItem(item: item)
     }
 }

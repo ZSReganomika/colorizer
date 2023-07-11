@@ -6,6 +6,10 @@ import Combine
 
 final class ColorizeViewController: BaseViewController {
 
+    // MARK: - Properties
+
+    weak var delegate: MainViewControllerDelegate?
+
     // MARK: - Private properties
 
     private let viewModel: ColorizeViewModelProtocol
@@ -17,6 +21,7 @@ final class ColorizeViewController: BaseViewController {
     private var imageView = UIImageView()
     private var addButton = UIBarButtonItem()
     private var deleteButton = UIBarButtonItem()
+    private var activityIndicator = UIActivityIndicatorView()
 
     private var imageViewHeightConstraint: NSLayoutConstraint?
 
@@ -55,6 +60,7 @@ extension ColorizeViewController: LayoutConfigurableView {
         view.backgroundColor = .white
         view.addSubview(colorizeButton)
         view.addSubview(imageView)
+        view.addSubview(activityIndicator)
     }
 
     func configureSubviews() {
@@ -63,11 +69,13 @@ extension ColorizeViewController: LayoutConfigurableView {
         configureImagePicker()
         configureAddButton()
         configureDeleteButton()
+        configureActivityIndicator()
     }
 
     func configureLayout() {
         configurePostPhotoButtonLayout()
         configureImageViewLayout()
+        configureActivityIndicatorLauput()
     }
 }
 
@@ -82,6 +90,8 @@ extension ColorizeViewController: BindingConfigurableView {
                 switch state {
                 case .initial:
                     self.setInitialState()
+                case .startColorize:
+                    self.setStartColorizeState()
                 case let .resultImage(image):
                     self.setResultImageState(image: image)
                 case let .error(error):
@@ -119,6 +129,16 @@ private extension ColorizeViewController {
         DispatchQueue.main.async {
             self.colorizeButton.isHidden = true
             self.imageView.image = image
+            self.activityIndicator.isHidden = false
+            self.activityIndicator.stopAnimating()
+        }
+        delegate?.updateData()
+    }
+
+    func setStartColorizeState() {
+        DispatchQueue.main.async {
+            self.activityIndicator.isHidden = false
+            self.activityIndicator.startAnimating()
         }
     }
 
@@ -195,20 +215,16 @@ private extension ColorizeViewController {
         imageViewHeightConstraint?.isActive = true
     }
 
-    func configureAddButton() {
-        addButton = UIBarButtonItem(
-            barButtonSystemItem: .add,
-            target: self,
-            action: #selector(addPhoto)
-        )
-    }
-
-    func configureDeleteButton() {
-        deleteButton = UIBarButtonItem(
-            barButtonSystemItem: .trash,
-            target: self,
-            action: #selector(removePhoto)
-        )
+    func configureActivityIndicatorLauput() {
+        NSLayoutConstraint.activate([
+            activityIndicator.centerXAnchor.constraint(
+                equalTo: view.centerXAnchor
+            ),
+            activityIndicator.bottomAnchor.constraint(
+                equalTo: colorizeButton.topAnchor,
+                constant: Constants.ActivityIndicator.bottom
+            )
+        ])
     }
 }
 
@@ -251,6 +267,29 @@ private extension ColorizeViewController {
         colorizeButton.layer.borderColor = UIColor.gray.cgColor
         colorizeButton.layer.borderWidth = 2
         colorizeButton.translatesAutoresizingMaskIntoConstraints = false
+    }
+
+    func configureAddButton() {
+        addButton = UIBarButtonItem(
+            barButtonSystemItem: .add,
+            target: self,
+            action: #selector(addPhoto)
+        )
+    }
+
+    func configureDeleteButton() {
+        deleteButton = UIBarButtonItem(
+            barButtonSystemItem: .trash,
+            target: self,
+            action: #selector(removePhoto)
+        )
+    }
+
+    func configureActivityIndicator() {
+        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
+        activityIndicator.tintColor = .gray
+        activityIndicator.style = .large
+        activityIndicator.isHidden = true
     }
 }
 
@@ -307,5 +346,9 @@ private enum Constants {
         static let bottom: CGFloat = -20.0
         static let sideInset: CGFloat = 20.0
         static let top: CGFloat = 20.0
+    }
+
+    enum ActivityIndicator {
+        static let bottom: CGFloat = -20.0
     }
 }

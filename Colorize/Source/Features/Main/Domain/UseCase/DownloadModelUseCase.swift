@@ -1,7 +1,7 @@
 import Foundation
 
 protocol DownloadModelUseCaseProtocol {
-    func getModel(
+    func getCoreMLModel(
         progressHandler: @escaping (ProgressModel) -> Void,
         resultHandler: @escaping () -> Void,
         errorHandler: @escaping (Error) -> Void
@@ -16,12 +16,12 @@ class DownloadModelUseCase: DownloadModelUseCaseProtocol {
         self.repository = repository
     }
 
-    func getModel(
+    func getCoreMLModel(
         progressHandler: @escaping (ProgressModel) -> Void,
         resultHandler: @escaping () -> Void,
         errorHandler: @escaping (Error) -> Void
     ) {
-        repository.getModel(
+        repository.getCoreMLModel(
             progressHandler: progressHandler,
             resultHandler: resultHandler,
             errorHandler: errorHandler

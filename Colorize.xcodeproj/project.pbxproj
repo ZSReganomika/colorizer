@@ -81,6 +81,10 @@
 		FA572A092A5ADAFB00FB1BAA /* SelfConfiguringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A082A5ADAFB00FB1BAA /* SelfConfiguringCell.swift */; };
 		FA572A0B2A5AE52F00FB1BAA /* HistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A0A2A5AE52F00FB1BAA /* HistoryItem.swift */; };
 		FA572A0D2A5AEC7600FB1BAA /* UICollectionView+Configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A0C2A5AEC7600FB1BAA /* UICollectionView+Configure.swift */; };
+		FA572A152A5D765600FB1BAA /* ColorizerModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA572A132A5D765500FB1BAA /* ColorizerModel.xcdatamodeld */; };
+		FA572A172A5D76A000FB1BAA /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A162A5D76A000FB1BAA /* CoreDataManager.swift */; };
+		FA572A192A5D7A6500FB1BAA /* GetHistoryItemsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A182A5D7A6500FB1BAA /* GetHistoryItemsUseCase.swift */; };
+		FA572A1B2A5D815800FB1BAA /* SaveHistoryItemUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A1A2A5D815800FB1BAA /* SaveHistoryItemUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -156,6 +160,10 @@
 		FA572A082A5ADAFB00FB1BAA /* SelfConfiguringCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfConfiguringCell.swift; sourceTree = "<group>"; };
 		FA572A0A2A5AE52F00FB1BAA /* HistoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryItem.swift; sourceTree = "<group>"; };
 		FA572A0C2A5AEC7600FB1BAA /* UICollectionView+Configure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Configure.swift"; sourceTree = "<group>"; };
+		FA572A142A5D765600FB1BAA /* ColorizerModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ColorizerModel.xcdatamodel; sourceTree = "<group>"; };
+		FA572A162A5D76A000FB1BAA /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		FA572A182A5D7A6500FB1BAA /* GetHistoryItemsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHistoryItemsUseCase.swift; sourceTree = "<group>"; };
+		FA572A1A2A5D815800FB1BAA /* SaveHistoryItemUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveHistoryItemUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,7 +279,8 @@
 		FA5728F72A52E8D400FB1BAA /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				FA5729582A53FCE500FB1BAA /* ImageColorizer.swift */,
+				FA572A122A5D763B00FB1BAA /* Colorizer */,
+				FA572A112A5D762E00FB1BAA /* CoreData */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -428,6 +437,7 @@
 			isa = PBXGroup;
 			children = (
 				FA5729E12A5883AB00FB1BAA /* DownloadModelUseCase.swift */,
+				FA572A182A5D7A6500FB1BAA /* GetHistoryItemsUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -444,6 +454,7 @@
 			isa = PBXGroup;
 			children = (
 				FA5729FF2A59774600FB1BAA /* ColorizeUseCase.swift */,
+				FA572A1A2A5D815800FB1BAA /* SaveHistoryItemUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -471,6 +482,23 @@
 				FA572A082A5ADAFB00FB1BAA /* SelfConfiguringCell.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		FA572A112A5D762E00FB1BAA /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				FA572A132A5D765500FB1BAA /* ColorizerModel.xcdatamodeld */,
+				FA572A162A5D76A000FB1BAA /* CoreDataManager.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		FA572A122A5D763B00FB1BAA /* Colorizer */ = {
+			isa = PBXGroup;
+			children = (
+				FA5729582A53FCE500FB1BAA /* ImageColorizer.swift */,
+			);
+			path = Colorizer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -583,12 +611,15 @@
 				FA57299A2A5437FF00FB1BAA /* cmscam02.c in Sources */,
 				FA5729F72A59765C00FB1BAA /* ColorizeFactory.swift in Sources */,
 				FA5729892A5437FF00FB1BAA /* UIImage+Lab.mm in Sources */,
+				FA572A1B2A5D815800FB1BAA /* SaveHistoryItemUseCase.swift in Sources */,
+				FA572A192A5D7A6500FB1BAA /* GetHistoryItemsUseCase.swift in Sources */,
 				FA5729EF2A5889AC00FB1BAA /* MainModels.swift in Sources */,
 				FA5729E22A5883AB00FB1BAA /* DownloadModelUseCase.swift in Sources */,
 				FA5729922A5437FF00FB1BAA /* cmsmtrx.c in Sources */,
 				FA57292E2A531B9E00FB1BAA /* LayoutConfigurableView.swift in Sources */,
 				FA5729912A5437FF00FB1BAA /* cmscnvrt.c in Sources */,
 				FA57298D2A5437FF00FB1BAA /* cmslut.c in Sources */,
+				FA572A172A5D76A000FB1BAA /* CoreDataManager.swift in Sources */,
 				FA5729932A5437FF00FB1BAA /* cmsplugin.c in Sources */,
 				FA5729F12A588A9F00FB1BAA /* MainFactory.swift in Sources */,
 				FA57295B2A53FD1200FB1BAA /* DispatchQueue+Background.swift in Sources */,
@@ -596,6 +627,7 @@
 				FA5729962A5437FF00FB1BAA /* cmsalpha.c in Sources */,
 				FA5728D92A52DB9F00FB1BAA /* AppDelegate.swift in Sources */,
 				FA572A042A5977AF00FB1BAA /* ColorizeRepository.swift in Sources */,
+				FA572A152A5D765600FB1BAA /* ColorizerModel.xcdatamodeld in Sources */,
 				FA5729942A5437FF00FB1BAA /* cmswtpnt.c in Sources */,
 				FA57298F2A5437FF00FB1BAA /* cmssamp.c in Sources */,
 				FA57298B2A5437FF00FB1BAA /* cmstypes.c in Sources */,
@@ -890,6 +922,19 @@
 			productName = FirebaseStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		FA572A132A5D765500FB1BAA /* ColorizerModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FA572A142A5D765600FB1BAA /* ColorizerModel.xcdatamodel */,
+			);
+			currentVersion = FA572A142A5D765600FB1BAA /* ColorizerModel.xcdatamodel */;
+			path = ColorizerModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FA5728CD2A52DB9F00FB1BAA /* Project object */;
 }

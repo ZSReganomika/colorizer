@@ -2,6 +2,10 @@ import Foundation
 import UIKit
 import Combine
 
+protocol MainViewControllerDelegate: AnyObject {
+    func updateData()
+}
+
 final class MainViewController: BaseViewController {
 
     // MARK: - Private properties
@@ -13,6 +17,8 @@ final class MainViewController: BaseViewController {
     private var emptyHistoryView = UIView()
     private var emptyHistoryLabel = UILabel()
     private var downloadModelButton = UIButton()
+    private var progressView = UIProgressView()
+    private var progressLabel = UILabel()
 
     private var collectionView: UICollectionView!
     private var dataSource: UICollectionViewDiffableDataSource<Constants.Section, Constants.DataItem>!
@@ -35,7 +41,10 @@ final class MainViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         configureView()
+
+        viewModel.prepareForDisplaying()
     }
 }
 
@@ -50,6 +59,8 @@ extension MainViewController: LayoutConfigurableView {
 
         view.addSubview(emptyHistoryView)
         view.addSubview(downloadModelButton)
+        view.addSubview(progressView)
+        view.addSubview(progressLabel)
 
         let image = UIImage(systemName: "gear")?.withRenderingMode(.alwaysOriginal)
         navigationItem.leftBarButtonItem = UIBarButtonItem(
@@ -71,6 +82,8 @@ extension MainViewController: LayoutConfigurableView {
         configureCollectionView()
         configureEmptyHistoryView()
         configureDownloadModelButton()
+        configureProgressView()
+        configureProgressLabel()
     }
 
     func configureLayout() {
@@ -78,6 +91,8 @@ extension MainViewController: LayoutConfigurableView {
         configureCollectionViewLayout()
         configureEmptyHistoryViewLayout()
         configureEmptyHistoryLabel()
+        configureProgressViewLayout()
+        configureProgressLabelLayout()
     }
 }
 
@@ -90,16 +105,20 @@ extension MainViewController: BindingConfigurableView {
             .state
             .sink { state in
                 switch state {
+                case .initial:
+                    self.setInitialState()
+                case .needDownloadModel:
+                    self.setNeedDownloadModelState()
+                case .startDownloadingModel:
+                    self.setStartDownloadingModelState()
                 case .modelDownloaded:
-                    print("Sucess")
+                    self.setModelDownloadedState()
                 case let .error(error):
-                    print(error.localizedDescription)
-                case let .progress(model):
-                    print(
-                        model.completedUnitCount.getReadableUnit(),
-                        "/",
-                        model.totalUnitCount.getReadableUnit()
-                    )
+                    self.setErrorState(error: error)
+                case let .progress(progress):
+                    self.setProgressState(progress: progress)
+                case let .historyItems(items):
+                    self.reloadData(items: items)
                 }
             }.store(in: &cancellables)
     }
@@ -110,6 +129,53 @@ extension MainViewController: BindingConfigurableView {
             action: #selector(downloadModelButtonAction),
             for: .touchUpInside
         )
+    }
+}
+
+// MARK: - State
+
+private extension MainViewController {
+
+    func setInitialState() {
+        viewModel.getHistoryItems()
+    }
+
+    func setStartDownloadingModelState() {
+        DispatchQueue.main.async {
+            self.progressLabel.isHidden = false
+            self.progressView.isHidden = false
+        }
+    }
+
+    func setNeedDownloadModelState() {
+        DispatchQueue.main.async {
+            self.downloadModelButton.isHidden = false
+            self.collectionView.isHidden = true
+            self.emptyHistoryView.isHidden = true
+        }
+    }
+
+    func setModelDownloadedState() {
+        DispatchQueue.main.async {
+            self.progressLabel.isHidden = true
+            self.progressView.isHidden = true
+            self.downloadModelButton.isHidden = true
+            self.collectionView.isHidden = false
+        }
+    }
+
+    func setErrorState(error: Error) {
+        print(error.localizedDescription)
+    }
+
+    func setProgressState(progress: ProgressModel) {
+        let progressValue = Float(progress.completedUnitCount.bytes) / Float(progress.totalUnitCount.bytes)
+        let progressLabelText = "\(progress.completedUnitCount.getReadableUnit()) / \(progress.totalUnitCount.getReadableUnit())"
+
+        DispatchQueue.main.async {
+            self.progressView.progress = progressValue
+            self.progressLabel.text = progressLabelText
+        }
     }
 }
 
@@ -135,7 +201,6 @@ private extension MainViewController {
         downloadModelButton.layer.borderColor = UIColor.gray.cgColor
         downloadModelButton.layer.borderWidth = 2
         downloadModelButton.translatesAutoresizingMaskIntoConstraints = false
-        downloadModelButton.isHidden = !viewModel.isNeedDownloadingModel
     }
 
     func configureEmptyHistoryView() {
@@ -144,7 +209,6 @@ private extension MainViewController {
         emptyHistoryView.layer.borderColor = UIColor.gray.cgColor
         emptyHistoryView.layer.borderWidth = 2
         emptyHistoryView.translatesAutoresizingMaskIntoConstraints = false
-        emptyHistoryView.isHidden = viewModel.isNeedDownloadingModel
 
         emptyHistoryLabel.text = Constants.EmptyHistoryLabel.title
         emptyHistoryLabel.font = UIFont.systemFont(
@@ -176,13 +240,28 @@ private extension MainViewController {
             AddNewItemCell.self,
             forCellWithReuseIdentifier: AddNewItemCell.reuseIdentifier
         )
-        collectionView.bounces = false
-        collectionView.isHidden = viewModel.isNeedDownloadingModel
         collectionView.delegate = self
 
         view.addSubview(collectionView)
 
         setupDataSource()
+    }
+
+    func configureProgressView() {
+        progressView.translatesAutoresizingMaskIntoConstraints = false
+        progressView.isHidden = true
+        progressView.tintColor = .gray
+    }
+
+    func configureProgressLabel() {
+        progressLabel.font = UIFont.systemFont(
+            ofSize: Constants.ProgressLabel.fontSize,
+            weight: .medium
+        )
+        progressLabel.textColor = UIColor.gray
+        progressLabel.textAlignment = .center
+        progressLabel.translatesAutoresizingMaskIntoConstraints = false
+        progressLabel.isHidden = true
     }
 }
 
@@ -200,21 +279,31 @@ private extension MainViewController {
                         cellType: AddNewItemCell.self,
                         for: indexPath
                     )
-                case .historyItem:
-                    return collectionView.configure(
+                case let .historyItem(item):
+                    let cell =  collectionView.configure(
                         cellType: HistoryItemCell.self,
                         for: indexPath
                     )
+                    cell.configure(item: item)
+                    return cell
                 }
         })
 
+        reloadData(items: [])
+    }
+
+    func reloadData(items: [HistoryItem]) {
+        let snaphot = snapshotForCurrentState(items: items)
         dataSource.apply(
-            snapshotForCurrentState(),
+            snaphot,
             animatingDifferences: false
         )
     }
 
-    func snapshotForCurrentState() -> NSDiffableDataSourceSnapshot<Constants.Section, Constants.DataItem>{
+    func snapshotForCurrentState(
+        items: [HistoryItem]
+    ) -> NSDiffableDataSourceSnapshot<Constants.Section, Constants.DataItem> {
+
         var snapshot = NSDiffableDataSourceSnapshot<Constants.Section, Constants.DataItem>()
         snapshot.appendSections(Constants.Section.allCases)
         snapshot.appendItems(
@@ -222,7 +311,7 @@ private extension MainViewController {
             toSection: Constants.Section.addItem
         )
         snapshot.appendItems(
-            viewModel.historyItems.map { Constants.DataItem.historyItem($0) },
+            items.map { Constants.DataItem.historyItem($0) },
             toSection: Constants.Section.historyItems
         )
         return snapshot
@@ -298,6 +387,43 @@ private extension MainViewController {
         ])
     }
 
+    func configureProgressViewLayout() {
+        NSLayoutConstraint.activate([
+            progressView.bottomAnchor.constraint(
+                equalTo: downloadModelButton.topAnchor,
+                constant: Constants.ProgressView.bottom
+            ),
+            progressView.leadingAnchor.constraint(
+                equalTo: view.leadingAnchor,
+                constant: Constants.ProgressView.leading
+            ),
+            progressView.trailingAnchor.constraint(
+                equalTo: view.trailingAnchor,
+                constant: Constants.ProgressView.trailing
+            ),
+            progressView.heightAnchor.constraint(
+                equalToConstant: Constants.ProgressView.height
+            )
+        ])
+    }
+
+    func configureProgressLabelLayout() {
+        NSLayoutConstraint.activate([
+            progressLabel.bottomAnchor.constraint(
+                equalTo: progressView.topAnchor,
+                constant: Constants.ProgressLabel.bottom
+            ),
+            progressLabel.leadingAnchor.constraint(
+                equalTo: view.leadingAnchor,
+                constant: Constants.ProgressLabel.leading
+            ),
+            progressLabel.trailingAnchor.constraint(
+                equalTo: view.trailingAnchor,
+                constant: Constants.ProgressLabel.trailing
+            )
+        ])
+    }
+
     func createLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { (sectionIndex, sectionEnvironment)  -> NSCollectionLayoutSection? in
             let section = Constants.Section(rawValue: sectionIndex)!
@@ -309,7 +435,9 @@ private extension MainViewController {
             }
         }
 
-        layout.configuration = UICollectionViewCompositionalLayoutConfiguration()
+        let configuration = UICollectionViewCompositionalLayoutConfiguration()
+        configuration.interSectionSpacing = Constants.CollectionView.spacing
+        layout.configuration = configuration
 
         return layout
     }
@@ -390,6 +518,7 @@ extension MainViewController: UICollectionViewDelegate {
         switch Constants.Section(rawValue: indexPath.section) {
         case .addItem:
             let viewController = ColorizeFactory().getColorizeController()
+            viewController.delegate = self
             navigationController?.pushViewController(
                 viewController,
                 animated: true
@@ -397,6 +526,15 @@ extension MainViewController: UICollectionViewDelegate {
         default:
             break
         }
+    }
+}
+
+// MARK: - MainViewControllerDelegate
+
+extension MainViewController: MainViewControllerDelegate {
+
+    func updateData() {
+        viewModel.getHistoryItems()
     }
 }
 
@@ -415,6 +553,13 @@ private enum Constants {
         static let height: CGFloat = 100.0
     }
 
+    enum ProgressView {
+        static let bottom: CGFloat = -10
+        static let leading: CGFloat = 50.0
+        static let trailing: CGFloat = -50.0
+        static let height: CGFloat = 10
+    }
+
     enum EmptyHistoryView {
         static let height: CGFloat = 100
         static let leading: CGFloat = 50.0
@@ -428,6 +573,13 @@ private enum Constants {
         static let top: CGFloat = 10
         static let leading: CGFloat = 10
         static let trailing: CGFloat = -10.0
+    }
+
+    enum ProgressLabel {
+        static let bottom: CGFloat = -10
+        static let fontSize: CGFloat = 16.0
+        static let leading: CGFloat = 50.0
+        static let trailing: CGFloat = -50.0
     }
 
     enum CollectionView {

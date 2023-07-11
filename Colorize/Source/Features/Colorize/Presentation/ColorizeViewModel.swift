@@ -26,6 +26,7 @@ final class ColorizeViewModel: ColorizeViewModelProtocol {
     // MARK: - Private properties
 
     private var colorizeUseCase: ColorizeUseCaseProtocol
+    private var saveHistoryItemUseCase: SaveHistoryItemUseCaseProtocol
 
     private var stateSubject = PassthroughSubject<ColorizeModels.State, Never>()
 
@@ -33,9 +34,12 @@ final class ColorizeViewModel: ColorizeViewModelProtocol {
 
     // MARK: - Initialization
 
-    init(colorizeUseCase: ColorizeUseCaseProtocol) {
+    init(
+        colorizeUseCase: ColorizeUseCaseProtocol,
+        saveHistoryItemUseCase: SaveHistoryItemUseCaseProtocol
+    ) {
         self.colorizeUseCase = colorizeUseCase
-
+        self.saveHistoryItemUseCase = saveHistoryItemUseCase
     }
 
     // MARK: - ColorizeViewModelProtocol actions
@@ -56,7 +60,12 @@ final class ColorizeViewModel: ColorizeViewModelProtocol {
 
     func colorize() {
         guard let image else { return }
+        stateSubject.send(.startColorize)
         colorizeUseCase.getResultImage(inputImage: image) { [weak self] resultImage in
+            self?.saveHistoryItemUseCase.saveHistoryItem(
+                image: image,
+                resultImage: resultImage
+            )
             self?.stateSubject.send(.resultImage(resultImage))
         } errorHandler: { [weak self] error in
             self?.stateSubject.send(.error(error))
