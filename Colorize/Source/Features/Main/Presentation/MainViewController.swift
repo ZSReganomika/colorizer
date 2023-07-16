@@ -118,7 +118,7 @@ extension MainViewController: BindingConfigurableView {
                 case let .progress(progress):
                     self.setProgressState(progress: progress)
                 case let .historyItems(items):
-                    self.reloadData(items: items)
+                    self.setHistoryItemsGottenState(items: items)
                 case let .openDetails(image):
                     self.setOpenDetailsState(image: image)
                 case .addItem:
@@ -168,6 +168,10 @@ private extension MainViewController {
             self.downloadModelButton.isHidden = true
             self.collectionView.isHidden = false
         }
+    }
+
+    func setHistoryItemsGottenState(items: [HistoryItem]) {
+        reloadData(items: items)
     }
 
     func setErrorState(error: Error) {

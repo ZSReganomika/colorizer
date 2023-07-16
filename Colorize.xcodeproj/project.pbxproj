@@ -96,6 +96,11 @@
 		FA572A362A64084200FB1BAA /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A352A64084200FB1BAA /* SettingsViewModel.swift */; };
 		FA572A382A64087100FB1BAA /* SettingsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A372A64087100FB1BAA /* SettingsModels.swift */; };
 		FA572A3A2A64097F00FB1BAA /* SettingsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A392A64097F00FB1BAA /* SettingsFactory.swift */; };
+		FA572A3E2A6410D000FB1BAA /* SettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A3D2A6410D000FB1BAA /* SettingsModel.swift */; };
+		FA572A422A64112F00FB1BAA /* SettingsRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A412A64112F00FB1BAA /* SettingsRepositoryProtocol.swift */; };
+		FA572A452A64117C00FB1BAA /* GetSettingItemsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A442A64117C00FB1BAA /* GetSettingItemsUseCase.swift */; };
+		FA572A482A6411E400FB1BAA /* SettingsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A472A6411E400FB1BAA /* SettingsRepository.swift */; };
+		FA572A4B2A64173900FB1BAA /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A4A2A64173900FB1BAA /* SettingsCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -186,6 +191,11 @@
 		FA572A352A64084200FB1BAA /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		FA572A372A64087100FB1BAA /* SettingsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModels.swift; sourceTree = "<group>"; };
 		FA572A392A64097F00FB1BAA /* SettingsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFactory.swift; sourceTree = "<group>"; };
+		FA572A3D2A6410D000FB1BAA /* SettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModel.swift; sourceTree = "<group>"; };
+		FA572A412A64112F00FB1BAA /* SettingsRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRepositoryProtocol.swift; sourceTree = "<group>"; };
+		FA572A442A64117C00FB1BAA /* GetSettingItemsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSettingItemsUseCase.swift; sourceTree = "<group>"; };
+		FA572A472A6411E400FB1BAA /* SettingsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRepository.swift; sourceTree = "<group>"; };
+		FA572A4A2A64173900FB1BAA /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -551,6 +561,8 @@
 			isa = PBXGroup;
 			children = (
 				FA572A322A64082100FB1BAA /* Presentation */,
+				FA572A3B2A64106400FB1BAA /* Domain */,
+				FA572A3F2A64110300FB1BAA /* Data */,
 				FA572A392A64097F00FB1BAA /* SettingsFactory.swift */,
 			);
 			path = Settings;
@@ -559,11 +571,70 @@
 		FA572A322A64082100FB1BAA /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				FA572A492A64172D00FB1BAA /* Cell */,
 				FA572A332A64083400FB1BAA /* SettingsViewController.swift */,
 				FA572A352A64084200FB1BAA /* SettingsViewModel.swift */,
 				FA572A372A64087100FB1BAA /* SettingsModels.swift */,
 			);
 			path = Presentation;
+			sourceTree = "<group>";
+		};
+		FA572A3B2A64106400FB1BAA /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				FA572A432A64116500FB1BAA /* UseCase */,
+				FA572A402A64111000FB1BAA /* Repository */,
+				FA572A3C2A6410BD00FB1BAA /* Entity */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		FA572A3C2A6410BD00FB1BAA /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				FA572A3D2A6410D000FB1BAA /* SettingsModel.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		FA572A3F2A64110300FB1BAA /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				FA572A462A6411D200FB1BAA /* Repository */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		FA572A402A64111000FB1BAA /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				FA572A412A64112F00FB1BAA /* SettingsRepositoryProtocol.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		FA572A432A64116500FB1BAA /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				FA572A442A64117C00FB1BAA /* GetSettingItemsUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		FA572A462A6411D200FB1BAA /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				FA572A472A6411E400FB1BAA /* SettingsRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		FA572A492A64172D00FB1BAA /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				FA572A4A2A64173900FB1BAA /* SettingsCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -678,6 +749,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA572A3E2A6410D000FB1BAA /* SettingsModel.swift in Sources */,
 				FA5729A42A5437FF00FB1BAA /* cmspack.c in Sources */,
 				FA5729A12A5437FF00FB1BAA /* cmsgmt.c in Sources */,
 				FA57298C2A5437FF00FB1BAA /* cmscgats.c in Sources */,
@@ -691,9 +763,11 @@
 				FA57299F2A5437FF00FB1BAA /* cmserr.c in Sources */,
 				FA572A252A63F5B700FB1BAA /* DetailsModels.swift in Sources */,
 				FA5729FE2A5976EA00FB1BAA /* ColorizeRepositoryProtocol.swift in Sources */,
+				FA572A422A64112F00FB1BAA /* SettingsRepositoryProtocol.swift in Sources */,
 				FA57298A2A5437FF00FB1BAA /* cmsps2.c in Sources */,
 				FA572A232A63F33300FB1BAA /* DetailsFactory.swift in Sources */,
 				FA5729A02A5437FF00FB1BAA /* cmsio1.c in Sources */,
+				FA572A452A64117C00FB1BAA /* GetSettingItemsUseCase.swift in Sources */,
 				FA5729A22A5437FF00FB1BAA /* cmspcs.c in Sources */,
 				FA5729E92A58863600FB1BAA /* ProgressModel.swift in Sources */,
 				FA5729E02A57051000FB1BAA /* HistoryItemCell.swift in Sources */,
@@ -719,6 +793,7 @@
 				FA5728D92A52DB9F00FB1BAA /* AppDelegate.swift in Sources */,
 				FA572A042A5977AF00FB1BAA /* ColorizeRepository.swift in Sources */,
 				FA572A152A5D765600FB1BAA /* ColorizerModel.xcdatamodeld in Sources */,
+				FA572A482A6411E400FB1BAA /* SettingsRepository.swift in Sources */,
 				FA5729942A5437FF00FB1BAA /* cmswtpnt.c in Sources */,
 				FA57298F2A5437FF00FB1BAA /* cmssamp.c in Sources */,
 				FA57298B2A5437FF00FB1BAA /* cmstypes.c in Sources */,
@@ -728,6 +803,7 @@
 				FA57299E2A5437FF00FB1BAA /* cmsvirt.c in Sources */,
 				FA572A362A64084200FB1BAA /* SettingsViewModel.swift in Sources */,
 				FA5729DB2A56EB6800FB1BAA /* ColorizeModel.swift in Sources */,
+				FA572A4B2A64173900FB1BAA /* SettingsCell.swift in Sources */,
 				FA5729A82A5437FF00FB1BAA /* cmshalf.c in Sources */,
 				FA5729A62A5437FF00FB1BAA /* cmsmd5.c in Sources */,
 				FA5729DD2A56EB8100FB1BAA /* Units.swift in Sources */,
