@@ -9,6 +9,7 @@ protocol MainViewModelProtocol {
     func downloadModel()
     func openDetails(index: Int)
     func addItem()
+    func openSettings()
 }
 
 class MainViewModel: MainViewModelProtocol {
@@ -84,5 +85,9 @@ class MainViewModel: MainViewModelProtocol {
 
     func addItem() {
         stateSubject.send(.addItem)
+    }
+
+    func openSettings() {
+        stateSubject.send(.openSettings)
     }
 }

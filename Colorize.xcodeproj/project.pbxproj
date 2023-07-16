@@ -92,6 +92,10 @@
 		FA572A2C2A64009D00FB1BAA /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = FA572A2B2A64009D00FB1BAA /* .swiftlint.yml */; };
 		FA572A2E2A64050600FB1BAA /* ColorizeModelOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A2D2A64050600FB1BAA /* ColorizeModelOutput.swift */; };
 		FA572A302A64052800FB1BAA /* ColorizeModelInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A2F2A64052800FB1BAA /* ColorizeModelInput.swift */; };
+		FA572A342A64083400FB1BAA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A332A64083400FB1BAA /* SettingsViewController.swift */; };
+		FA572A362A64084200FB1BAA /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A352A64084200FB1BAA /* SettingsViewModel.swift */; };
+		FA572A382A64087100FB1BAA /* SettingsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A372A64087100FB1BAA /* SettingsModels.swift */; };
+		FA572A3A2A64097F00FB1BAA /* SettingsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A392A64097F00FB1BAA /* SettingsFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -178,6 +182,10 @@
 		FA572A2B2A64009D00FB1BAA /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		FA572A2D2A64050600FB1BAA /* ColorizeModelOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorizeModelOutput.swift; sourceTree = "<group>"; };
 		FA572A2F2A64052800FB1BAA /* ColorizeModelInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorizeModelInput.swift; sourceTree = "<group>"; };
+		FA572A332A64083400FB1BAA /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		FA572A352A64084200FB1BAA /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		FA572A372A64087100FB1BAA /* SettingsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModels.swift; sourceTree = "<group>"; };
+		FA572A392A64097F00FB1BAA /* SettingsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,6 +253,7 @@
 		FA5728F22A52E80100FB1BAA /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				FA572A312A64081900FB1BAA /* Settings */,
 				FA572A1C2A63F29F00FB1BAA /* Details */,
 				FA5729D22A56E3C000FB1BAA /* Colorize */,
 				FA5728F32A52E80C00FB1BAA /* Main */,
@@ -538,6 +547,25 @@
 			path = Presentation;
 			sourceTree = "<group>";
 		};
+		FA572A312A64081900FB1BAA /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				FA572A322A64082100FB1BAA /* Presentation */,
+				FA572A392A64097F00FB1BAA /* SettingsFactory.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		FA572A322A64082100FB1BAA /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				FA572A332A64083400FB1BAA /* SettingsViewController.swift */,
+				FA572A352A64084200FB1BAA /* SettingsViewModel.swift */,
+				FA572A372A64087100FB1BAA /* SettingsModels.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -672,6 +700,7 @@
 				FA57299A2A5437FF00FB1BAA /* cmscam02.c in Sources */,
 				FA5729F72A59765C00FB1BAA /* ColorizeFactory.swift in Sources */,
 				FA5729892A5437FF00FB1BAA /* UIImage+Lab.mm in Sources */,
+				FA572A3A2A64097F00FB1BAA /* SettingsFactory.swift in Sources */,
 				FA572A1B2A5D815800FB1BAA /* SaveHistoryItemUseCase.swift in Sources */,
 				FA572A192A5D7A6500FB1BAA /* GetHistoryItemsUseCase.swift in Sources */,
 				FA5729EF2A5889AC00FB1BAA /* MainModels.swift in Sources */,
@@ -697,6 +726,7 @@
 				FA5729E62A58848100FB1BAA /* DownloadModelRepository.swift in Sources */,
 				FA572A0B2A5AE52F00FB1BAA /* HistoryItem.swift in Sources */,
 				FA57299E2A5437FF00FB1BAA /* cmsvirt.c in Sources */,
+				FA572A362A64084200FB1BAA /* SettingsViewModel.swift in Sources */,
 				FA5729DB2A56EB6800FB1BAA /* ColorizeModel.swift in Sources */,
 				FA5729A82A5437FF00FB1BAA /* cmshalf.c in Sources */,
 				FA5729A62A5437FF00FB1BAA /* cmsmd5.c in Sources */,
@@ -713,6 +743,8 @@
 				FA5729D82A56E3C000FB1BAA /* ColorizeViewModel.swift in Sources */,
 				FA5728FF2A52EB6900FB1BAA /* Data+.swift in Sources */,
 				FA57299B2A5437FF00FB1BAA /* cmssm.c in Sources */,
+				FA572A382A64087100FB1BAA /* SettingsModels.swift in Sources */,
+				FA572A342A64083400FB1BAA /* SettingsViewController.swift in Sources */,
 				FA572A002A59774600FB1BAA /* ColorizeUseCase.swift in Sources */,
 				FA5729EB2A58870400FB1BAA /* MainViewModel.swift in Sources */,
 				FA5729F52A59718B00FB1BAA /* AddNewItemCell.swift in Sources */,

@@ -123,6 +123,8 @@ extension MainViewController: BindingConfigurableView {
                     self.setOpenDetailsState(image: image)
                 case .addItem:
                     self.addItemState()
+                case .openSettings:
+                    self.setOpenSettingsState()
                 }
             }.store(in: &cancellables)
     }
@@ -195,6 +197,14 @@ private extension MainViewController {
     func addItemState() {
         let viewController = ColorizeFactory().getColorizeController()
         viewController.delegate = self
+        navigationController?.pushViewController(
+            viewController,
+            animated: true
+        )
+    }
+
+    func setOpenSettingsState() {
+        let viewController = SettingsFactory().getSettingsController()
         navigationController?.pushViewController(
             viewController,
             animated: true
@@ -529,7 +539,7 @@ private extension MainViewController {
 
     @objc
     func openSettings() {
-
+        viewModel.openSettings()
     }
 }
 

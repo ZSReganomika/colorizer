@@ -9,5 +9,6 @@ enum MainModels {
         case modelDownloaded
         case openDetails(UIImage)
         case addItem
+        case openSettings
     }
 }
