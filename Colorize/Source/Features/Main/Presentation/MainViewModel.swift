@@ -7,6 +7,8 @@ protocol MainViewModelProtocol {
     func prepareForDisplaying()
     func getHistoryItems()
     func downloadModel()
+    func openDetails(index: Int)
+    func addItem()
 }
 
 class MainViewModel: MainViewModelProtocol {
@@ -18,6 +20,8 @@ class MainViewModel: MainViewModelProtocol {
     }
 
     // MARK: - Private properties
+
+    private var historyItems = [HistoryItem]()
 
     private let downloadModelUseCase: DownloadModelUseCaseProtocol
     private let getHistoryItemsUseCase: GetHistoryItemsUseCaseProtocol
@@ -49,6 +53,7 @@ class MainViewModel: MainViewModelProtocol {
     func getHistoryItems() {
         if isModelDownloaded {
             getHistoryItemsUseCase.getHistoryItems { [weak self] items in
+                self?.historyItems = items
                 self?.stateSubject.send(.historyItems(items))
             } errorHandler: { [weak self] error in
                 self?.stateSubject.send(.error(error))
@@ -67,5 +72,17 @@ class MainViewModel: MainViewModelProtocol {
         } errorHandler: { [weak self] error in
             self?.stateSubject.send(.error(error))
         }
+    }
+
+    func openDetails(index: Int) {
+        if index < historyItems.count,
+           let data = historyItems[index].resultImageData,
+           let image = UIImage(data: data) {
+            stateSubject.send(.openDetails(image))
+        }
+    }
+
+    func addItem() {
+        stateSubject.send(.addItem)
     }
 }

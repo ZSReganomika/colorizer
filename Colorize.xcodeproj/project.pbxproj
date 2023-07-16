@@ -85,6 +85,11 @@
 		FA572A172A5D76A000FB1BAA /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A162A5D76A000FB1BAA /* CoreDataManager.swift */; };
 		FA572A192A5D7A6500FB1BAA /* GetHistoryItemsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A182A5D7A6500FB1BAA /* GetHistoryItemsUseCase.swift */; };
 		FA572A1B2A5D815800FB1BAA /* SaveHistoryItemUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A1A2A5D815800FB1BAA /* SaveHistoryItemUseCase.swift */; };
+		FA572A1F2A63F2BE00FB1BAA /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A1E2A63F2BE00FB1BAA /* DetailsViewController.swift */; };
+		FA572A212A63F2CB00FB1BAA /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A202A63F2CB00FB1BAA /* DetailsViewModel.swift */; };
+		FA572A232A63F33300FB1BAA /* DetailsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A222A63F33300FB1BAA /* DetailsFactory.swift */; };
+		FA572A252A63F5B700FB1BAA /* DetailsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A242A63F5B700FB1BAA /* DetailsModels.swift */; };
+		FA572A272A63FC1900FB1BAA /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A262A63FC1900FB1BAA /* UIImage+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -164,6 +169,11 @@
 		FA572A162A5D76A000FB1BAA /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		FA572A182A5D7A6500FB1BAA /* GetHistoryItemsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHistoryItemsUseCase.swift; sourceTree = "<group>"; };
 		FA572A1A2A5D815800FB1BAA /* SaveHistoryItemUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveHistoryItemUseCase.swift; sourceTree = "<group>"; };
+		FA572A1E2A63F2BE00FB1BAA /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		FA572A202A63F2CB00FB1BAA /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
+		FA572A222A63F33300FB1BAA /* DetailsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsFactory.swift; sourceTree = "<group>"; };
+		FA572A242A63F5B700FB1BAA /* DetailsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsModels.swift; sourceTree = "<group>"; };
+		FA572A262A63FC1900FB1BAA /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +240,7 @@
 		FA5728F22A52E80100FB1BAA /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				FA572A1C2A63F29F00FB1BAA /* Details */,
 				FA5729D22A56E3C000FB1BAA /* Colorize */,
 				FA5728F32A52E80C00FB1BAA /* Main */,
 			);
@@ -292,6 +303,7 @@
 				FA5729532A532FD200FB1BAA /* UIImage+Scaled.swift */,
 				FA57295A2A53FD1200FB1BAA /* DispatchQueue+Background.swift */,
 				FA572A0C2A5AEC7600FB1BAA /* UICollectionView+Configure.swift */,
+				FA572A262A63FC1900FB1BAA /* UIImage+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -501,6 +513,25 @@
 			path = Colorizer;
 			sourceTree = "<group>";
 		};
+		FA572A1C2A63F29F00FB1BAA /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				FA572A1D2A63F2A800FB1BAA /* Presentation */,
+				FA572A222A63F33300FB1BAA /* DetailsFactory.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		FA572A1D2A63F2A800FB1BAA /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				FA572A1E2A63F2BE00FB1BAA /* DetailsViewController.swift */,
+				FA572A202A63F2CB00FB1BAA /* DetailsViewModel.swift */,
+				FA572A242A63F5B700FB1BAA /* DetailsModels.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -602,8 +633,10 @@
 				FA5728DD2A52DB9F00FB1BAA /* MainViewController.swift in Sources */,
 				FA5729982A5437FF00FB1BAA /* cmsgamma.c in Sources */,
 				FA57299F2A5437FF00FB1BAA /* cmserr.c in Sources */,
+				FA572A252A63F5B700FB1BAA /* DetailsModels.swift in Sources */,
 				FA5729FE2A5976EA00FB1BAA /* ColorizeRepositoryProtocol.swift in Sources */,
 				FA57298A2A5437FF00FB1BAA /* cmsps2.c in Sources */,
+				FA572A232A63F33300FB1BAA /* DetailsFactory.swift in Sources */,
 				FA5729A02A5437FF00FB1BAA /* cmsio1.c in Sources */,
 				FA5729A22A5437FF00FB1BAA /* cmspcs.c in Sources */,
 				FA5729E92A58863600FB1BAA /* ProgressModel.swift in Sources */,
@@ -644,12 +677,15 @@
 				FA5729952A5437FF00FB1BAA /* cmsnamed.c in Sources */,
 				FA5729E42A58840C00FB1BAA /* DownloadModelRepositoryProtocol.swift in Sources */,
 				FA5729ED2A58886100FB1BAA /* ColorizeModels.swift in Sources */,
+				FA572A212A63F2CB00FB1BAA /* DetailsViewModel.swift in Sources */,
+				FA572A1F2A63F2BE00FB1BAA /* DetailsViewController.swift in Sources */,
 				FA572A092A5ADAFB00FB1BAA /* SelfConfiguringCell.swift in Sources */,
 				FA5729D82A56E3C000FB1BAA /* ColorizeViewModel.swift in Sources */,
 				FA5728FF2A52EB6900FB1BAA /* Data+Append.swift in Sources */,
 				FA57299B2A5437FF00FB1BAA /* cmssm.c in Sources */,
 				FA572A002A59774600FB1BAA /* ColorizeUseCase.swift in Sources */,
 				FA5729EB2A58870400FB1BAA /* MainViewModel.swift in Sources */,
+				FA572A272A63FC1900FB1BAA /* UIImage+.swift in Sources */,
 				FA5729F52A59718B00FB1BAA /* AddNewItemCell.swift in Sources */,
 				FA5729F32A588B7800FB1BAA /* BindingConfigurableView.swift in Sources */,
 			);

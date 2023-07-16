@@ -55,14 +55,14 @@ extension MainViewController: LayoutConfigurableView {
     func configureViewProperties() {
         title = Constants.title
 
-        view.backgroundColor = .white
-
         view.addSubview(emptyHistoryView)
         view.addSubview(downloadModelButton)
         view.addSubview(progressView)
         view.addSubview(progressLabel)
 
-        let image = UIImage(systemName: "gear")?.withRenderingMode(.alwaysOriginal)
+        let image = UIImage(
+            systemName: Constants.leftButtonItemImageName
+        )?.withRenderingMode(.alwaysOriginal)
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: image,
             style: .plain,
@@ -119,6 +119,10 @@ extension MainViewController: BindingConfigurableView {
                     self.setProgressState(progress: progress)
                 case let .historyItems(items):
                     self.reloadData(items: items)
+                case let .openDetails(image):
+                    self.setOpenDetailsState(image: image)
+                case .addItem:
+                    self.addItemState()
                 }
             }.store(in: &cancellables)
     }
@@ -176,6 +180,23 @@ private extension MainViewController {
             self.progressView.progress = progressValue
             self.progressLabel.text = progressLabelText
         }
+    }
+
+    func setOpenDetailsState(image: UIImage) {
+        let viewController = DetailsFactory().getDetailsController(image: image)
+        navigationController?.pushViewController(
+            viewController,
+            animated: true
+        )
+    }
+
+    func addItemState() {
+        let viewController = ColorizeFactory().getColorizeController()
+        viewController.delegate = self
+        navigationController?.pushViewController(
+            viewController,
+            animated: true
+        )
     }
 }
 
@@ -517,12 +538,9 @@ extension MainViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch Constants.Section(rawValue: indexPath.section) {
         case .addItem:
-            let viewController = ColorizeFactory().getColorizeController()
-            viewController.delegate = self
-            navigationController?.pushViewController(
-                viewController,
-                animated: true
-            )
+            viewModel.addItem()
+        case .historyItems:
+            viewModel.openDetails(index: indexPath.row)
         default:
             break
         }
@@ -543,6 +561,8 @@ extension MainViewController: MainViewControllerDelegate {
 private enum Constants {
 
     static let title: String = "Main"
+
+    static let leftButtonItemImageName: String = "gear"
 
     enum DownloadModelButton {
         static let title: String = "DOWNLOAD MODEL"

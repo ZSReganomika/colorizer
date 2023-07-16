@@ -7,5 +7,7 @@ enum MainModels {
         case progress(ProgressModel)
         case historyItems([HistoryItem])
         case modelDownloaded
+        case openDetails(UIImage)
+        case addItem
     }
 }

@@ -57,7 +57,6 @@ extension ColorizeViewController: LayoutConfigurableView {
     func configureViewProperties() {
         title = Constants.title
 
-        view.backgroundColor = .white
         view.addSubview(colorizeButton)
         view.addSubview(imageView)
         view.addSubview(activityIndicator)
@@ -118,7 +117,7 @@ extension ColorizeViewController: BindingConfigurableView {
 private extension ColorizeViewController {
 
     func setInitialState() {
-        navigationItem.rightBarButtonItem = self.addButton
+        navigationItem.rightBarButtonItem = addButton
     }
 
     func setErrorState(error: Error) {
@@ -158,7 +157,10 @@ private extension ColorizeViewController {
             self.imageView.isHidden = false
             self.colorizeButton.isHidden = false
             self.imageView.image = image
-            self.imageViewHeightConstraint?.constant = self.getResizedImageHeight(image: image)
+            self.imageViewHeightConstraint?.constant = image.getResizedImageHeight(
+                leading: Constants.ImageView.leading,
+                trailing: Constants.ImageView.trailing
+            )
         }
     }
 }
@@ -166,12 +168,6 @@ private extension ColorizeViewController {
 // MARK: - Constraints
 
 private extension ColorizeViewController {
-
-    func getResizedImageHeight(image: UIImage) -> CGFloat {
-        let scale = image.size.height / image.size.width
-        let width = UIScreen.main.bounds.width
-        return (width - (Constants.ImageView.sideInset * 2)) * scale
-    }
 
     func configurePostPhotoButtonLayout() {
         NSLayoutConstraint.activate([
@@ -201,11 +197,11 @@ private extension ColorizeViewController {
             ),
             imageView.leadingAnchor.constraint(
                 equalTo: view.leadingAnchor,
-                constant: Constants.ImageView.sideInset
+                constant: Constants.ImageView.leading
             ),
             imageView.trailingAnchor.constraint(
                 equalTo: view.trailingAnchor,
-                constant: -Constants.ImageView.sideInset
+                constant: Constants.ImageView.trailing
             )
         ])
 
@@ -343,8 +339,8 @@ private enum Constants {
     }
 
     enum ImageView {
-        static let bottom: CGFloat = -20.0
-        static let sideInset: CGFloat = 20.0
+        static let leading: CGFloat = 20.0
+        static let trailing: CGFloat = -20.0
         static let top: CGFloat = 20.0
     }
 
