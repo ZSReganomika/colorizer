@@ -11,11 +11,11 @@
 		FA5728DD2A52DB9F00FB1BAA /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5728DC2A52DB9F00FB1BAA /* MainViewController.swift */; };
 		FA5728E22A52DBA100FB1BAA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA5728E12A52DBA100FB1BAA /* Assets.xcassets */; };
 		FA5728E52A52DBA100FB1BAA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA5728E32A52DBA100FB1BAA /* LaunchScreen.storyboard */; };
-		FA5728FF2A52EB6900FB1BAA /* Data+Append.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5728FE2A52EB6900FB1BAA /* Data+Append.swift */; };
+		FA5728FF2A52EB6900FB1BAA /* Data+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5728FE2A52EB6900FB1BAA /* Data+.swift */; };
 		FA57292E2A531B9E00FB1BAA /* LayoutConfigurableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5729052A531B9E00FB1BAA /* LayoutConfigurableView.swift */; };
-		FA5729542A532FD200FB1BAA /* UIImage+Scaled.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5729532A532FD200FB1BAA /* UIImage+Scaled.swift */; };
+		FA5729542A532FD200FB1BAA /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5729532A532FD200FB1BAA /* UIImage+.swift */; };
 		FA5729592A53FCE500FB1BAA /* ImageColorizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA5729582A53FCE500FB1BAA /* ImageColorizer.swift */; };
-		FA57295B2A53FD1200FB1BAA /* DispatchQueue+Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57295A2A53FD1200FB1BAA /* DispatchQueue+Background.swift */; };
+		FA57295B2A53FD1200FB1BAA /* DispatchQueue+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA57295A2A53FD1200FB1BAA /* DispatchQueue+.swift */; };
 		FA5729892A5437FF00FB1BAA /* UIImage+Lab.mm in Sources */ = {isa = PBXBuildFile; fileRef = FA5729622A5437FF00FB1BAA /* UIImage+Lab.mm */; };
 		FA57298A2A5437FF00FB1BAA /* cmsps2.c in Sources */ = {isa = PBXBuildFile; fileRef = FA5729642A5437FF00FB1BAA /* cmsps2.c */; };
 		FA57298B2A5437FF00FB1BAA /* cmstypes.c in Sources */ = {isa = PBXBuildFile; fileRef = FA5729652A5437FF00FB1BAA /* cmstypes.c */; };
@@ -80,7 +80,7 @@
 		FA572A072A597BE100FB1BAA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A062A597BE100FB1BAA /* BaseViewController.swift */; };
 		FA572A092A5ADAFB00FB1BAA /* SelfConfiguringCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A082A5ADAFB00FB1BAA /* SelfConfiguringCell.swift */; };
 		FA572A0B2A5AE52F00FB1BAA /* HistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A0A2A5AE52F00FB1BAA /* HistoryItem.swift */; };
-		FA572A0D2A5AEC7600FB1BAA /* UICollectionView+Configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A0C2A5AEC7600FB1BAA /* UICollectionView+Configure.swift */; };
+		FA572A0D2A5AEC7600FB1BAA /* UICollectionView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A0C2A5AEC7600FB1BAA /* UICollectionView+.swift */; };
 		FA572A152A5D765600FB1BAA /* ColorizerModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA572A132A5D765500FB1BAA /* ColorizerModel.xcdatamodeld */; };
 		FA572A172A5D76A000FB1BAA /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A162A5D76A000FB1BAA /* CoreDataManager.swift */; };
 		FA572A192A5D7A6500FB1BAA /* GetHistoryItemsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A182A5D7A6500FB1BAA /* GetHistoryItemsUseCase.swift */; };
@@ -89,7 +89,6 @@
 		FA572A212A63F2CB00FB1BAA /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A202A63F2CB00FB1BAA /* DetailsViewModel.swift */; };
 		FA572A232A63F33300FB1BAA /* DetailsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A222A63F33300FB1BAA /* DetailsFactory.swift */; };
 		FA572A252A63F5B700FB1BAA /* DetailsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A242A63F5B700FB1BAA /* DetailsModels.swift */; };
-		FA572A272A63FC1900FB1BAA /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A262A63FC1900FB1BAA /* UIImage+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,11 +98,11 @@
 		FA5728E12A52DBA100FB1BAA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA5728E42A52DBA100FB1BAA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA5728E62A52DBA100FB1BAA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FA5728FE2A52EB6900FB1BAA /* Data+Append.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Append.swift"; sourceTree = "<group>"; };
+		FA5728FE2A52EB6900FB1BAA /* Data+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+.swift"; sourceTree = "<group>"; };
 		FA5729052A531B9E00FB1BAA /* LayoutConfigurableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutConfigurableView.swift; sourceTree = "<group>"; };
-		FA5729532A532FD200FB1BAA /* UIImage+Scaled.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Scaled.swift"; sourceTree = "<group>"; };
+		FA5729532A532FD200FB1BAA /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		FA5729582A53FCE500FB1BAA /* ImageColorizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageColorizer.swift; sourceTree = "<group>"; };
-		FA57295A2A53FD1200FB1BAA /* DispatchQueue+Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Background.swift"; sourceTree = "<group>"; };
+		FA57295A2A53FD1200FB1BAA /* DispatchQueue+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+.swift"; sourceTree = "<group>"; };
 		FA57295E2A5437FF00FB1BAA /* Colorize-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Colorize-Bridging-Header.h"; sourceTree = "<group>"; };
 		FA57295F2A5437FF00FB1BAA /* UIImage+Lab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Lab.h"; sourceTree = "<group>"; };
 		FA5729622A5437FF00FB1BAA /* UIImage+Lab.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = "UIImage+Lab.mm"; sourceTree = "<group>"; };
@@ -164,7 +163,7 @@
 		FA572A062A597BE100FB1BAA /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		FA572A082A5ADAFB00FB1BAA /* SelfConfiguringCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfConfiguringCell.swift; sourceTree = "<group>"; };
 		FA572A0A2A5AE52F00FB1BAA /* HistoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryItem.swift; sourceTree = "<group>"; };
-		FA572A0C2A5AEC7600FB1BAA /* UICollectionView+Configure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Configure.swift"; sourceTree = "<group>"; };
+		FA572A0C2A5AEC7600FB1BAA /* UICollectionView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+.swift"; sourceTree = "<group>"; };
 		FA572A142A5D765600FB1BAA /* ColorizerModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ColorizerModel.xcdatamodel; sourceTree = "<group>"; };
 		FA572A162A5D76A000FB1BAA /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		FA572A182A5D7A6500FB1BAA /* GetHistoryItemsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetHistoryItemsUseCase.swift; sourceTree = "<group>"; };
@@ -173,7 +172,6 @@
 		FA572A202A63F2CB00FB1BAA /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		FA572A222A63F33300FB1BAA /* DetailsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsFactory.swift; sourceTree = "<group>"; };
 		FA572A242A63F5B700FB1BAA /* DetailsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsModels.swift; sourceTree = "<group>"; };
-		FA572A262A63FC1900FB1BAA /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -299,11 +297,10 @@
 		FA5728FD2A52EB5C00FB1BAA /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				FA5728FE2A52EB6900FB1BAA /* Data+Append.swift */,
-				FA5729532A532FD200FB1BAA /* UIImage+Scaled.swift */,
-				FA57295A2A53FD1200FB1BAA /* DispatchQueue+Background.swift */,
-				FA572A0C2A5AEC7600FB1BAA /* UICollectionView+Configure.swift */,
-				FA572A262A63FC1900FB1BAA /* UIImage+.swift */,
+				FA5728FE2A52EB6900FB1BAA /* Data+.swift */,
+				FA5729532A532FD200FB1BAA /* UIImage+.swift */,
+				FA57295A2A53FD1200FB1BAA /* DispatchQueue+.swift */,
+				FA572A0C2A5AEC7600FB1BAA /* UICollectionView+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -626,7 +623,7 @@
 				FA5729A12A5437FF00FB1BAA /* cmsgmt.c in Sources */,
 				FA57298C2A5437FF00FB1BAA /* cmscgats.c in Sources */,
 				FA5729A72A5437FF00FB1BAA /* cmsintrp.c in Sources */,
-				FA572A0D2A5AEC7600FB1BAA /* UICollectionView+Configure.swift in Sources */,
+				FA572A0D2A5AEC7600FB1BAA /* UICollectionView+.swift in Sources */,
 				FA57298E2A5437FF00FB1BAA /* cmsopt.c in Sources */,
 				FA572A072A597BE100FB1BAA /* BaseViewController.swift in Sources */,
 				FA57299C2A5437FF00FB1BAA /* cmsxform.c in Sources */,
@@ -655,7 +652,7 @@
 				FA572A172A5D76A000FB1BAA /* CoreDataManager.swift in Sources */,
 				FA5729932A5437FF00FB1BAA /* cmsplugin.c in Sources */,
 				FA5729F12A588A9F00FB1BAA /* MainFactory.swift in Sources */,
-				FA57295B2A53FD1200FB1BAA /* DispatchQueue+Background.swift in Sources */,
+				FA57295B2A53FD1200FB1BAA /* DispatchQueue+.swift in Sources */,
 				FA5729972A5437FF00FB1BAA /* cmsio0.c in Sources */,
 				FA5729962A5437FF00FB1BAA /* cmsalpha.c in Sources */,
 				FA5728D92A52DB9F00FB1BAA /* AppDelegate.swift in Sources */,
@@ -673,7 +670,7 @@
 				FA5729A62A5437FF00FB1BAA /* cmsmd5.c in Sources */,
 				FA5729DD2A56EB8100FB1BAA /* Units.swift in Sources */,
 				FA5729D92A56E3C000FB1BAA /* ColorizeViewController.swift in Sources */,
-				FA5729542A532FD200FB1BAA /* UIImage+Scaled.swift in Sources */,
+				FA5729542A532FD200FB1BAA /* UIImage+.swift in Sources */,
 				FA5729952A5437FF00FB1BAA /* cmsnamed.c in Sources */,
 				FA5729E42A58840C00FB1BAA /* DownloadModelRepositoryProtocol.swift in Sources */,
 				FA5729ED2A58886100FB1BAA /* ColorizeModels.swift in Sources */,
@@ -681,11 +678,10 @@
 				FA572A1F2A63F2BE00FB1BAA /* DetailsViewController.swift in Sources */,
 				FA572A092A5ADAFB00FB1BAA /* SelfConfiguringCell.swift in Sources */,
 				FA5729D82A56E3C000FB1BAA /* ColorizeViewModel.swift in Sources */,
-				FA5728FF2A52EB6900FB1BAA /* Data+Append.swift in Sources */,
+				FA5728FF2A52EB6900FB1BAA /* Data+.swift in Sources */,
 				FA57299B2A5437FF00FB1BAA /* cmssm.c in Sources */,
 				FA572A002A59774600FB1BAA /* ColorizeUseCase.swift in Sources */,
 				FA5729EB2A58870400FB1BAA /* MainViewModel.swift in Sources */,
-				FA572A272A63FC1900FB1BAA /* UIImage+.swift in Sources */,
 				FA5729F52A59718B00FB1BAA /* AddNewItemCell.swift in Sources */,
 				FA5729F32A588B7800FB1BAA /* BindingConfigurableView.swift in Sources */,
 			);
