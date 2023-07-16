@@ -89,6 +89,9 @@
 		FA572A212A63F2CB00FB1BAA /* DetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A202A63F2CB00FB1BAA /* DetailsViewModel.swift */; };
 		FA572A232A63F33300FB1BAA /* DetailsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A222A63F33300FB1BAA /* DetailsFactory.swift */; };
 		FA572A252A63F5B700FB1BAA /* DetailsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A242A63F5B700FB1BAA /* DetailsModels.swift */; };
+		FA572A2C2A64009D00FB1BAA /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = FA572A2B2A64009D00FB1BAA /* .swiftlint.yml */; };
+		FA572A2E2A64050600FB1BAA /* ColorizeModelOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A2D2A64050600FB1BAA /* ColorizeModelOutput.swift */; };
+		FA572A302A64052800FB1BAA /* ColorizeModelInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A2F2A64052800FB1BAA /* ColorizeModelInput.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -172,6 +175,9 @@
 		FA572A202A63F2CB00FB1BAA /* DetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewModel.swift; sourceTree = "<group>"; };
 		FA572A222A63F33300FB1BAA /* DetailsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsFactory.swift; sourceTree = "<group>"; };
 		FA572A242A63F5B700FB1BAA /* DetailsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsModels.swift; sourceTree = "<group>"; };
+		FA572A2B2A64009D00FB1BAA /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		FA572A2D2A64050600FB1BAA /* ColorizeModelOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorizeModelOutput.swift; sourceTree = "<group>"; };
+		FA572A2F2A64052800FB1BAA /* ColorizeModelInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorizeModelInput.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +225,7 @@
 				FA5729AF2A55C27400FB1BAA /* GoogleService-Info.plist */,
 				FA5728E32A52DBA100FB1BAA /* LaunchScreen.storyboard */,
 				FA5728E62A52DBA100FB1BAA /* Info.plist */,
+				FA572A2B2A64009D00FB1BAA /* .swiftlint.yml */,
 			);
 			path = Colorize;
 			sourceTree = "<group>";
@@ -320,10 +327,12 @@
 		FA57295C2A5437FF00FB1BAA /* ColorizeUtils */ = {
 			isa = PBXGroup;
 			children = (
-				FA5729DA2A56EB6800FB1BAA /* ColorizeModel.swift */,
 				FA57295E2A5437FF00FB1BAA /* Colorize-Bridging-Header.h */,
 				FA57295F2A5437FF00FB1BAA /* UIImage+Lab.h */,
 				FA5729622A5437FF00FB1BAA /* UIImage+Lab.mm */,
+				FA5729DA2A56EB6800FB1BAA /* ColorizeModel.swift */,
+				FA572A2F2A64052800FB1BAA /* ColorizeModelInput.swift */,
+				FA572A2D2A64050600FB1BAA /* ColorizeModelOutput.swift */,
 				FA5729632A5437FF00FB1BAA /* littlecms */,
 			);
 			path = ColorizeUtils;
@@ -539,6 +548,7 @@
 				FA5728D12A52DB9F00FB1BAA /* Sources */,
 				FA5728D22A52DB9F00FB1BAA /* Frameworks */,
 				FA5728D32A52DB9F00FB1BAA /* Resources */,
+				FA572A2A2A64006C00FB1BAA /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -601,6 +611,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA572A2C2A64009D00FB1BAA /* .swiftlint.yml in Resources */,
 				FA5728E52A52DBA100FB1BAA /* LaunchScreen.storyboard in Resources */,
 				FA5729B02A55C27400FB1BAA /* GoogleService-Info.plist in Resources */,
 				FA5729A32A5437FF00FB1BAA /* sRGB_ICC_v4_Appearance.icc in Resources */,
@@ -613,6 +624,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		FA572A2A2A64006C00FB1BAA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [[ \"$(uname -m)\" == arm64 ]]; then\n    export PATH=\"/opt/homebrew/bin:$PATH\"\nfi\n\nif which swiftlint > /dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FA5728D12A52DB9F00FB1BAA /* Sources */ = {
@@ -651,6 +682,7 @@
 				FA57298D2A5437FF00FB1BAA /* cmslut.c in Sources */,
 				FA572A172A5D76A000FB1BAA /* CoreDataManager.swift in Sources */,
 				FA5729932A5437FF00FB1BAA /* cmsplugin.c in Sources */,
+				FA572A302A64052800FB1BAA /* ColorizeModelInput.swift in Sources */,
 				FA5729F12A588A9F00FB1BAA /* MainFactory.swift in Sources */,
 				FA57295B2A53FD1200FB1BAA /* DispatchQueue+.swift in Sources */,
 				FA5729972A5437FF00FB1BAA /* cmsio0.c in Sources */,
@@ -672,6 +704,7 @@
 				FA5729D92A56E3C000FB1BAA /* ColorizeViewController.swift in Sources */,
 				FA5729542A532FD200FB1BAA /* UIImage+.swift in Sources */,
 				FA5729952A5437FF00FB1BAA /* cmsnamed.c in Sources */,
+				FA572A2E2A64050600FB1BAA /* ColorizeModelOutput.swift in Sources */,
 				FA5729E42A58840C00FB1BAA /* DownloadModelRepositoryProtocol.swift in Sources */,
 				FA5729ED2A58886100FB1BAA /* ColorizeModels.swift in Sources */,
 				FA572A212A63F2CB00FB1BAA /* DetailsViewModel.swift in Sources */,

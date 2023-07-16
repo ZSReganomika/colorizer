@@ -56,7 +56,7 @@ final class DownloadModelRepository: DownloadModelRepositoryProtocol {
             progressHandler(progressModel)
         }
 
-        downloadTask.observe(.success) { snapshot in
+        downloadTask.observe(.success) { _ in
 
             DispatchQueue.global().async {
                 do {
@@ -75,7 +75,7 @@ final class DownloadModelRepository: DownloadModelRepositoryProtocol {
                         permanentURL.lastPathComponent,
                         forKey: "ml_model_destination"
                     )
-                    let _ = try FileManager.default.removeItem(at: localURL)
+                    _ = try FileManager.default.removeItem(at: localURL)
                     resultHandler()
                 } catch {
                     errorHandler(error)

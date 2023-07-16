@@ -130,7 +130,6 @@ private extension DetailsViewController {
     }
 }
 
-
 // MARK: - Private actions
 
 private extension DetailsViewController {

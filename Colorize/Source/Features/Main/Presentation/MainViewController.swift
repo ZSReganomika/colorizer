@@ -174,7 +174,9 @@ private extension MainViewController {
 
     func setProgressState(progress: ProgressModel) {
         let progressValue = Float(progress.completedUnitCount.bytes) / Float(progress.totalUnitCount.bytes)
-        let progressLabelText = "\(progress.completedUnitCount.getReadableUnit()) / \(progress.totalUnitCount.getReadableUnit())"
+        let completedUnit = progress.completedUnitCount.getReadableUnit()
+        let totalUnit = progress.totalUnitCount.getReadableUnit()
+        let progressLabelText = "\(completedUnit) / \(totalUnit)"
 
         DispatchQueue.main.async {
             self.progressView.progress = progressValue
@@ -446,7 +448,7 @@ private extension MainViewController {
     }
 
     func createLayout() -> UICollectionViewLayout {
-        let layout = UICollectionViewCompositionalLayout { (sectionIndex, sectionEnvironment)  -> NSCollectionLayoutSection? in
+        let layout = UICollectionViewCompositionalLayout { sectionIndex, _ -> NSCollectionLayoutSection? in
             let section = Constants.Section(rawValue: sectionIndex)!
             switch section {
             case .addItem:

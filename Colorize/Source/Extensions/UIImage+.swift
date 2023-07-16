@@ -28,10 +28,10 @@ extension UIImage {
     func resizedImage(with size: CGSize) -> UIImage? {
         guard let image = cgImage else { return nil }
 
-        if (image.colorSpace?.model == .rgb) {
-            let bytesPerPixel = 4;
-            let bytesPerRow = bytesPerPixel * Int(size.width);
-            let bitsPerComponent = 8;
+        if image.colorSpace?.model == .rgb {
+            let bytesPerPixel = 4
+            let bytesPerRow = bytesPerPixel * Int(size.width)
+            let bitsPerComponent = 8
             let context = CGContext(data: nil,
                                     width: Int(size.width),
                                     height: Int(size.height),
@@ -45,7 +45,7 @@ extension UIImage {
             guard let scaledImage = context?.makeImage() else { return nil }
 
             return UIImage(cgImage: scaledImage)
-        } else if (image.colorSpace?.model == .monochrome) {
+        } else if image.colorSpace?.model == .monochrome {
             let context = CGContext(data: nil,
                                     width: Int(size.width),
                                     height: Int(size.height),

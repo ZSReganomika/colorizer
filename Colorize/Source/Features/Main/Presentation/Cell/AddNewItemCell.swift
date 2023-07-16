@@ -15,7 +15,7 @@ final class AddNewItemCell: UICollectionViewCell,
     // MARK: - Initialization
 
     override init(frame: CGRect) {
-        super.init(frame:frame)
+        super.init(frame: frame)
         configureView()
     }
 

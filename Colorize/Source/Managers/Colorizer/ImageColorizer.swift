@@ -68,7 +68,9 @@ final class ImageColorizer: ImageColorizerProtocol {
 // MARK: Private
 
 private struct LAB {
-    let l, a, b: [NSNumber]
+    let l: [NSNumber]
+    let a: [NSNumber]
+    let b: [NSNumber]
 }
 
 private enum ColorizerError: Swift.Error {
@@ -141,8 +143,8 @@ extension ImageColorizer {
                 NSNumber(value: idx / Constants.inputDimension),
                 NSNumber(value: idx % Constants.inputDimension)
             ]
-            a.append(NSNumber(value: colorizerOutput._796[aIdx].doubleValue))
-            b.append(NSNumber(value: colorizerOutput._796[bIdx].doubleValue))
+            a.append(NSNumber(value: colorizerOutput.output[aIdx].doubleValue))
+            b.append(NSNumber(value: colorizerOutput.output[bIdx].doubleValue))
         }
         return LAB(l: inputImageLab.l, a: a, b: b)
     }

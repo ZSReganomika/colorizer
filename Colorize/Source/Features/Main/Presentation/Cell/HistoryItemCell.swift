@@ -14,7 +14,7 @@ class HistoryItemCell: UICollectionViewCell,
     // MARK: - Initialization
 
     override init(frame: CGRect) {
-        super.init(frame:frame)
+        super.init(frame: frame)
         configureView()
     }
 
@@ -23,7 +23,7 @@ class HistoryItemCell: UICollectionViewCell,
     }
 
     // MARK: - Life cycle
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
     }

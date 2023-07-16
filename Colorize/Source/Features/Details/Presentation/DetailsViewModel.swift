@@ -3,7 +3,7 @@ import Combine
 
 protocol DetailsViewModelProtocol {
     var state: AnyPublisher<DetailsModels.State, Never> { get }
-    
+
     func prepareForDisplay()
     func share()
 }

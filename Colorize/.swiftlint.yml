@@ -1,0 +1,6 @@
+disabled_rules:
+    - identifier_name
+
+file_length:
+    warning: 700
+    error: 1000
