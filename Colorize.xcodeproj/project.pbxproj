@@ -101,7 +101,21 @@
 		FA572A452A64117C00FB1BAA /* GetSettingItemsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A442A64117C00FB1BAA /* GetSettingItemsUseCase.swift */; };
 		FA572A482A6411E400FB1BAA /* SettingsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A472A6411E400FB1BAA /* SettingsRepository.swift */; };
 		FA572A4B2A64173900FB1BAA /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A4A2A64173900FB1BAA /* SettingsCell.swift */; };
+		FA572A5C2A64207800FB1BAA /* MainViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA572A5B2A64207800FB1BAA /* MainViewModelTests.swift */; };
+		FA572A612A6422AD00FB1BAA /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = FA572A602A6422AD00FB1BAA /* FirebaseAppCheck */; };
+		FA572A632A6422B400FB1BAA /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = FA572A622A6422B400FB1BAA /* FirebaseAuth */; };
+		FA572A652A6422D100FB1BAA /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = FA572A642A6422D100FB1BAA /* FirebaseStorage */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FA572A542A64201300FB1BAA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FA5728CD2A52DB9F00FB1BAA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FA5728D42A52DB9F00FB1BAA;
+			remoteInfo = Colorize;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		FA5728D52A52DB9F00FB1BAA /* Colorize.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Colorize.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -196,6 +210,8 @@
 		FA572A442A64117C00FB1BAA /* GetSettingItemsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSettingItemsUseCase.swift; sourceTree = "<group>"; };
 		FA572A472A6411E400FB1BAA /* SettingsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRepository.swift; sourceTree = "<group>"; };
 		FA572A4A2A64173900FB1BAA /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
+		FA572A502A64201300FB1BAA /* ColorizeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ColorizeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA572A5B2A64207800FB1BAA /* MainViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +231,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FA572A4D2A64201300FB1BAA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA572A612A6422AD00FB1BAA /* FirebaseAppCheck in Frameworks */,
+				FA572A632A6422B400FB1BAA /* FirebaseAuth in Frameworks */,
+				FA572A652A6422D100FB1BAA /* FirebaseStorage in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -222,7 +248,9 @@
 			isa = PBXGroup;
 			children = (
 				FA5728D72A52DB9F00FB1BAA /* Colorize */,
+				FA572A512A64201300FB1BAA /* ColorizeTests */,
 				FA5728D62A52DB9F00FB1BAA /* Products */,
+				FA572A5D2A64229B00FB1BAA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -230,6 +258,7 @@
 			isa = PBXGroup;
 			children = (
 				FA5728D52A52DB9F00FB1BAA /* Colorize.app */,
+				FA572A502A64201300FB1BAA /* ColorizeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -637,6 +666,29 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		FA572A512A64201300FB1BAA /* ColorizeTests */ = {
+			isa = PBXGroup;
+			children = (
+				FA572A592A64203700FB1BAA /* Main */,
+			);
+			path = ColorizeTests;
+			sourceTree = "<group>";
+		};
+		FA572A592A64203700FB1BAA /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				FA572A5B2A64207800FB1BAA /* MainViewModelTests.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		FA572A5D2A64229B00FB1BAA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -669,6 +721,29 @@
 			productReference = FA5728D52A52DB9F00FB1BAA /* Colorize.app */;
 			productType = "com.apple.product-type.application";
 		};
+		FA572A4F2A64201300FB1BAA /* ColorizeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA572A562A64201300FB1BAA /* Build configuration list for PBXNativeTarget "ColorizeTests" */;
+			buildPhases = (
+				FA572A4C2A64201300FB1BAA /* Sources */,
+				FA572A4D2A64201300FB1BAA /* Frameworks */,
+				FA572A4E2A64201300FB1BAA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FA572A552A64201300FB1BAA /* PBXTargetDependency */,
+			);
+			name = ColorizeTests;
+			packageProductDependencies = (
+				FA572A602A6422AD00FB1BAA /* FirebaseAppCheck */,
+				FA572A622A6422B400FB1BAA /* FirebaseAuth */,
+				FA572A642A6422D100FB1BAA /* FirebaseStorage */,
+			);
+			productName = ColorizeTests;
+			productReference = FA572A502A64201300FB1BAA /* ColorizeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -681,6 +756,11 @@
 				TargetAttributes = {
 					FA5728D42A52DB9F00FB1BAA = {
 						CreatedOnToolsVersion = 14.2;
+					};
+					FA572A4F2A64201300FB1BAA = {
+						CreatedOnToolsVersion = 14.2;
+						LastSwiftMigration = 1420;
+						TestTargetID = FA5728D42A52DB9F00FB1BAA;
 					};
 				};
 			};
@@ -701,6 +781,7 @@
 			projectRoot = "";
 			targets = (
 				FA5728D42A52DB9F00FB1BAA /* Colorize */,
+				FA572A4F2A64201300FB1BAA /* ColorizeTests */,
 			);
 		};
 /* End PBXProject section */
@@ -719,6 +800,13 @@
 				FA5729992A5437FF00FB1BAA /* Makefile.am in Resources */,
 				FA5728E22A52DBA100FB1BAA /* Assets.xcassets in Resources */,
 				FA5729902A5437FF00FB1BAA /* sRGB_v4_ICC_preference.icc in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA572A4E2A64201300FB1BAA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -828,7 +916,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FA572A4C2A64201300FB1BAA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FA572A5C2A64207800FB1BAA /* MainViewModelTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FA572A552A64201300FB1BAA /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FA5728D42A52DB9F00FB1BAA /* Colorize */;
+			targetProxy = FA572A542A64201300FB1BAA /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		FA5728E32A52DBA100FB1BAA /* LaunchScreen.storyboard */ = {
@@ -1014,6 +1118,53 @@
 			};
 			name = Release;
 		};
+		FA572A572A64201300FB1BAA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = z.s..ColorizeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Colorize.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Colorize";
+			};
+			name = Debug;
+		};
+		FA572A582A64201300FB1BAA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = z.s..ColorizeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Colorize.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Colorize";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1031,6 +1182,15 @@
 			buildConfigurations = (
 				FA5728EA2A52DBA100FB1BAA /* Debug */,
 				FA5728EB2A52DBA100FB1BAA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FA572A562A64201300FB1BAA /* Build configuration list for PBXNativeTarget "ColorizeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FA572A572A64201300FB1BAA /* Debug */,
+				FA572A582A64201300FB1BAA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1090,6 +1250,21 @@
 			productName = FirebaseRemoteConfigSwift;
 		};
 		FA5729C32A55CFBE00FB1BAA /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA5729B22A55CFBE00FB1BAA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		FA572A602A6422AD00FB1BAA /* FirebaseAppCheck */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA5729B22A55CFBE00FB1BAA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAppCheck;
+		};
+		FA572A622A6422B400FB1BAA /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FA5729B22A55CFBE00FB1BAA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		FA572A642A6422D100FB1BAA /* FirebaseStorage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = FA5729B22A55CFBE00FB1BAA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
